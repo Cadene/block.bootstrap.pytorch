@@ -1,0 +1,37 @@
+language: python
+sudo: required
+dist: xenial
+python:
+  - "3.7"
+
+stages:
+  - test
+
+install:
+  - sudo apt-get update
+  - wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh;
+  - bash miniconda.sh -b -p $HOME/miniconda
+  - export PATH="$HOME/miniconda/bin:$PATH"
+  - hash -r
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  # Useful for debugging any issues with conda
+  - conda info -a
+  - conda create -q -n test-environment -c pytorch python=$TRAVIS_PYTHON_VERSION numpy mock pytorch-cpu
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.7 ]]; then pip install enum34; fi
+  - source activate test-environment
+  - pip install --upgrade pytest codecov pytest-cov
+  # Install block
+  - git clone https://github.com/Cadene/block.bootstrap.pytorch.git
+  - cd block.bootstrap.pytorch
+  - pip install -r requirements.txt
+
+script:
+  - python -m pytest tests/test_fusions.py -s --cov block --cov-report term-missing
+
+after_success:
+  # Ignore codecov failures as the codecov server is not
+  # very reliable but we don't want travis to report a failure
+  # in the github UI just because the coverage report failed to
+  # be published.
+  - codecov || echo "codecov upload failed"

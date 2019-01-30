@@ -1,0 +1,957 @@
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62: options: 
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:   dataset:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     batch_size: 64
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     debug: False
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     dir: data/vrd
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     eval_split: val
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     import: block.datasets.factory
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     mode: predicate
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     name: vrd
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     nb_threads: 8
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     neg_ratio: 0.5
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     train_split: train
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:   engine:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     debug: False
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     name: logger
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     nb_epochs: 15
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     print_freq: 10
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     saving_criteria: ['eval_epoch.predicate.R_50:max']
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:   exp:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     dir: logs/vrd/block
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     resume: None
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:   misc:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     cuda: True
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     logs_name: None
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     seed: 1337
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:   model:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     criterion:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       import: block.models.criterions.factory
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       name: vrd_bce
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     metric:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       import: block.models.metrics.factory
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       name: vrd_predicate
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     name: default
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     network:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       aggreg:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         type: cat
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       aggreg_dropout: 0.5
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       classeme:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         chunks: 10
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         input_dims: [100, 100]
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         mm_dim: 700
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         output_dim: 200
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         rank: 5
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         shared: False
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         type: block
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       classeme_dim: 100
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       feature:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         chunks: 10
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         input_dims: [2048, 2048]
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         mm_dim: 700
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         output_dim: 200
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         rank: 5
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         shared: False
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         type: block
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       import: block.models.networks.factory
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       name: vrd_net
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       nb_classeme: 101
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       predictor:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         activation: relu
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         dimensions: [71]
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         dropout: 0.0
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         input_dim: 600
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:       spatial:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         chunks: 10
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         input_dims: [4, 4]
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         mm_dim: 700
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         output_dim: 200
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         rank: 5
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         shared: False
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:         type: block
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:   optimizer:
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     gradual_warmup_steps: [0.5, 2.0, 4]
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     import: block.optimizers.factory
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     init: glorot
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     lr: 0.003
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     lr_decay_epochs: [10, 20, 2]
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     lr_decay_rate: 0.25
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:     name: Adamax
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:   path_opts: block/options/vrd/block.yaml
+[S 2019-01-18 22:47:10] ...oject/bootstrap/run.py.62:   view: ['logs:train_epoch.loss+logs:eval_epoch.loss', 'logs:train_epoch.predicate.R_50+logs:eval_epoch.predicate.R_50', 'logs:train_epoch.predicate.R_100+logs:eval_epoch.predicate.R_100', 'logs:train_epoch.accuracy_top1+logs:eval_epoch.accuracy_top1', 'logs:train_epoch.accuracy_top5+logs:eval_epoch.accuracy_top5', 'logs:train_epoch.lr']
+[I 2019-01-18 22:47:10] ...oject/bootstrap/run.py.63: posix.uname_result(sysname='Linux', nodename='sledge', release='4.17.0-1-amd64', version='#1 SMP Debian 4.17.8-1 (2018-07-20)', machine='x86_64')
+[I 2019-01-18 22:47:10] ...oject/bootstrap/run.py.67: Available GPUs: [3]
+[I 2019-01-18 22:47:10] ...rap/engines/factory.py.8: Creating engine...
+[I 2019-01-18 22:47:10] ...ap/datasets/factory.py.8: Creating dataset...
+[I 2019-01-18 22:47:11] ...ap/datasets/factory.py.18: Training will take place on trainset (3591 items)
+[I 2019-01-18 22:47:11] ...ap/datasets/factory.py.21: Evaluation will take place on valset (189 items)
+[I 2019-01-18 22:47:11] ...trap/models/factory.py.12: Creating model...
+[I 2019-01-18 22:47:11] ...ls/networks/factory.py.8: Creating network...
+[S 2019-01-18 22:47:11] ...ls/networks/vrd_net.py.18: nb_params_fusion: 778600
+[S 2019-01-18 22:47:11] ...ls/networks/vrd_net.py.19: nb_params_fusion: 644200
+[S 2019-01-18 22:47:11] ...ls/networks/vrd_net.py.20: nb_params_fusion: 3505800
+[I 2019-01-18 22:47:11] .../criterions/factory.py.16: Creating criterion from bootstrap for train mode...
+[I 2019-01-18 22:47:11] .../criterions/factory.py.16: Creating criterion from bootstrap for eval mode...
+[I 2019-01-18 22:47:11] ...els/metrics/factory.py.14: Creating metric from bootstrap for train mode...
+[I 2019-01-18 22:47:11] ...els/metrics/factory.py.14: Creating metric from bootstrap for eval mode...
+[I 2019-01-18 22:47:15] ...strap/views/factory.py.7: Creating view...
+[I 2019-01-18 22:47:15] ...trap/engines/engine.py.112: Launching training procedures
+[I 2019-01-18 22:47:15] ...trap/engines/engine.py.150: Training model on trainset for epoch 0
+[I 2019-01-18 22:47:15] ...mizers/lr_scheduler.py.93: Gradual Warmup lr: 0.00300000 -> 0.00150000
+[I 2019-01-18 22:47:16] ...trap/engines/engine.py.207: train: epoch 0 | batch 0/56
+[I 2019-01-18 22:47:16] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:04
+[I 2019-01-18 22:47:16] ...trap/engines/engine.py.211:       process: 1.15699 | load: 0.66713
+[I 2019-01-18 22:47:16] ...trap/engines/engine.py.212:       loss: 0.69766
+[I 2019-01-18 22:47:16] ...mizers/lr_scheduler.py.103:       norm: 0.43728
+[I 2019-01-18 22:47:19] ...trap/engines/engine.py.207: train: epoch 0 | batch 10/56
+[I 2019-01-18 22:47:19] ...trap/engines/engine.py.210:       elapsed: 0:00:04 | left: 0:00:17
+[I 2019-01-18 22:47:19] ...trap/engines/engine.py.211:       process: 0.27243 | load: 0.00041
+[I 2019-01-18 22:47:19] ...trap/engines/engine.py.212:       loss: 0.02251
+[I 2019-01-18 22:47:19] ...mizers/lr_scheduler.py.103:       norm: 0.18347
+[I 2019-01-18 22:47:22] ...trap/engines/engine.py.207: train: epoch 0 | batch 20/56
+[I 2019-01-18 22:47:22] ...trap/engines/engine.py.210:       elapsed: 0:00:07 | left: 0:00:10
+[I 2019-01-18 22:47:22] ...trap/engines/engine.py.211:       process: 0.29804 | load: 0.00038
+[I 2019-01-18 22:47:22] ...trap/engines/engine.py.212:       loss: 0.02158
+[I 2019-01-18 22:47:22] ...mizers/lr_scheduler.py.103:       norm: 0.10511
+[I 2019-01-18 22:47:25] ...trap/engines/engine.py.207: train: epoch 0 | batch 30/56
+[I 2019-01-18 22:47:25] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:07
+[I 2019-01-18 22:47:25] ...trap/engines/engine.py.211:       process: 0.28647 | load: 0.00056
+[I 2019-01-18 22:47:25] ...trap/engines/engine.py.212:       loss: 0.02328
+[I 2019-01-18 22:47:25] ...mizers/lr_scheduler.py.103:       norm: 0.07673
+[I 2019-01-18 22:47:27] ...trap/engines/engine.py.207: train: epoch 0 | batch 40/56
+[I 2019-01-18 22:47:27] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:47:27] ...trap/engines/engine.py.211:       process: 0.27448 | load: 0.00057
+[I 2019-01-18 22:47:27] ...trap/engines/engine.py.212:       loss: 0.01977
+[I 2019-01-18 22:47:27] ...mizers/lr_scheduler.py.103:       norm: 0.06097
+[I 2019-01-18 22:47:30] ...trap/engines/engine.py.207: train: epoch 0 | batch 50/56
+[I 2019-01-18 22:47:30] ...trap/engines/engine.py.210:       elapsed: 0:00:15 | left: 0:00:01
+[I 2019-01-18 22:47:30] ...trap/engines/engine.py.211:       process: 0.27331 | load: 0.00048
+[I 2019-01-18 22:47:30] ...trap/engines/engine.py.212:       loss: 0.01794
+[I 2019-01-18 22:47:30] ...mizers/lr_scheduler.py.103:       norm: 0.05074
+[S 2019-01-18 22:47:32] ...trap/engines/engine.py.116: train_epoch.epoch: 0
+[S 2019-01-18 22:47:32] ...trap/engines/engine.py.116: train_epoch.loss: 0.060470
+[S 2019-01-18 22:47:32] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 11.20
+[S 2019-01-18 22:47:32] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 39.16
+[S 2019-01-18 22:47:32] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 42.58068999061946
+[S 2019-01-18 22:47:32] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 54.40016676510441
+[I 2019-01-18 22:47:32] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 0
+[I 2019-01-18 22:47:33] ...trap/engines/engine.py.298: eval: epoch 0 | batch 0/2
+[I 2019-01-18 22:47:33] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:47:33] ...trap/engines/engine.py.302:       process: 0.73371 | load: 0.44288
+[S 2019-01-18 22:47:33] ...trap/engines/engine.py.119: eval_epoch.epoch: 0
+[S 2019-01-18 22:47:33] ...trap/engines/engine.py.119: eval_epoch.loss: 0.069874
+[S 2019-01-18 22:47:33] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 30.39
+[S 2019-01-18 22:47:33] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 58.60
+[S 2019-01-18 22:47:33] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 60.24173027989822
+[S 2019-01-18 22:47:33] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 74.87277353689568
+[I 2019-01-18 22:47:33] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:47:34] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:47:34] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:47:34] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:47:34] ...trap/engines/engine.py.150: Training model on trainset for epoch 1
+[I 2019-01-18 22:47:34] ...mizers/lr_scheduler.py.93: Gradual Warmup lr: 0.00150000 -> 0.00300000
+[I 2019-01-18 22:47:36] ...trap/engines/engine.py.207: train: epoch 1 | batch 0/56
+[I 2019-01-18 22:47:36] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:34
+[I 2019-01-18 22:47:36] ...trap/engines/engine.py.211:       process: 1.67899 | load: 0.82545
+[I 2019-01-18 22:47:36] ...trap/engines/engine.py.212:       loss: 0.02125
+[I 2019-01-18 22:47:36] ...mizers/lr_scheduler.py.103:       norm: 0.04573
+[W 2019-01-18 22:47:36] ...ootstrap/views/view.py.100: View 'eval_epoch.loss' not in 'logs.json'
+[W 2019-01-18 22:47:36] ...ootstrap/views/view.py.100: View 'eval_epoch.predicate.R_50' not in 'logs.json'
+[W 2019-01-18 22:47:36] ...ootstrap/views/view.py.100: View 'eval_epoch.predicate.R_100' not in 'logs.json'
+[W 2019-01-18 22:47:36] ...ootstrap/views/view.py.100: View 'eval_epoch.accuracy_top1' not in 'logs.json'
+[W 2019-01-18 22:47:36] ...ootstrap/views/view.py.100: View 'eval_epoch.accuracy_top5' not in 'logs.json'
+[I 2019-01-18 22:47:36] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:47:36] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:47:39] ...trap/engines/engine.py.207: train: epoch 1 | batch 10/56
+[I 2019-01-18 22:47:39] ...trap/engines/engine.py.210:       elapsed: 0:00:04 | left: 0:00:19
+[I 2019-01-18 22:47:39] ...trap/engines/engine.py.211:       process: 0.28039 | load: 0.00035
+[I 2019-01-18 22:47:39] ...trap/engines/engine.py.212:       loss: 0.01735
+[I 2019-01-18 22:47:39] ...mizers/lr_scheduler.py.103:       norm: 0.04006
+[I 2019-01-18 22:47:42] ...trap/engines/engine.py.207: train: epoch 1 | batch 20/56
+[I 2019-01-18 22:47:42] ...trap/engines/engine.py.210:       elapsed: 0:00:07 | left: 0:00:10
+[I 2019-01-18 22:47:42] ...trap/engines/engine.py.211:       process: 0.28515 | load: 0.00038
+[I 2019-01-18 22:47:42] ...trap/engines/engine.py.212:       loss: 0.01623
+[I 2019-01-18 22:47:42] ...mizers/lr_scheduler.py.103:       norm: 0.03579
+[I 2019-01-18 22:47:44] ...trap/engines/engine.py.207: train: epoch 1 | batch 30/56
+[I 2019-01-18 22:47:44] ...trap/engines/engine.py.210:       elapsed: 0:00:10 | left: 0:00:07
+[I 2019-01-18 22:47:44] ...trap/engines/engine.py.211:       process: 0.26686 | load: 0.00054
+[I 2019-01-18 22:47:44] ...trap/engines/engine.py.212:       loss: 0.01776
+[I 2019-01-18 22:47:44] ...mizers/lr_scheduler.py.103:       norm: 0.03236
+[I 2019-01-18 22:47:47] ...trap/engines/engine.py.207: train: epoch 1 | batch 40/56
+[I 2019-01-18 22:47:47] ...trap/engines/engine.py.210:       elapsed: 0:00:13 | left: 0:00:04
+[I 2019-01-18 22:47:47] ...trap/engines/engine.py.211:       process: 0.30375 | load: 0.00047
+[I 2019-01-18 22:47:47] ...trap/engines/engine.py.212:       loss: 0.01597
+[I 2019-01-18 22:47:47] ...mizers/lr_scheduler.py.103:       norm: 0.02960
+[I 2019-01-18 22:47:50] ...trap/engines/engine.py.207: train: epoch 1 | batch 50/56
+[I 2019-01-18 22:47:50] ...trap/engines/engine.py.210:       elapsed: 0:00:15 | left: 0:00:01
+[I 2019-01-18 22:47:50] ...trap/engines/engine.py.211:       process: 0.26313 | load: 0.00086
+[I 2019-01-18 22:47:50] ...trap/engines/engine.py.212:       loss: 0.01465
+[I 2019-01-18 22:47:50] ...mizers/lr_scheduler.py.103:       norm: 0.02733
+[S 2019-01-18 22:47:51] ...trap/engines/engine.py.116: train_epoch.epoch: 1
+[S 2019-01-18 22:47:51] ...trap/engines/engine.py.116: train_epoch.loss: 0.017506
+[S 2019-01-18 22:47:51] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 27.49
+[S 2019-01-18 22:47:51] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 57.10
+[S 2019-01-18 22:47:51] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 60.19177987006219
+[S 2019-01-18 22:47:51] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 70.96897474203523
+[I 2019-01-18 22:47:52] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 1
+[I 2019-01-18 22:47:52] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:47:52] ...trap/engines/engine.py.298: eval: epoch 1 | batch 0/2
+[I 2019-01-18 22:47:52] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:47:52] ...trap/engines/engine.py.302:       process: 0.79445 | load: 0.56830
+[S 2019-01-18 22:47:53] ...trap/engines/engine.py.119: eval_epoch.epoch: 1
+[S 2019-01-18 22:47:53] ...trap/engines/engine.py.119: eval_epoch.loss: 0.055505
+[S 2019-01-18 22:47:53] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 43.28
+[S 2019-01-18 22:47:53] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 72.09
+[S 2019-01-18 22:47:53] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 72.90076335877863
+[S 2019-01-18 22:47:53] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 80.21628498727735
+[I 2019-01-18 22:47:53] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:47:53] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:47:53] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:47:54] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:47:54] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:47:54] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:47:54] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:47:54] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:47:55] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:47:55] ...trap/engines/engine.py.150: Training model on trainset for epoch 2
+[I 2019-01-18 22:47:55] ...mizers/lr_scheduler.py.93: Gradual Warmup lr: 0.00300000 -> 0.00450000
+[I 2019-01-18 22:47:56] ...trap/engines/engine.py.207: train: epoch 2 | batch 0/56
+[I 2019-01-18 22:47:56] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:27
+[I 2019-01-18 22:47:56] ...trap/engines/engine.py.211:       process: 1.56584 | load: 1.13216
+[I 2019-01-18 22:47:56] ...trap/engines/engine.py.212:       loss: 0.01659
+[I 2019-01-18 22:47:56] ...mizers/lr_scheduler.py.103:       norm: 0.02611
+[I 2019-01-18 22:47:59] ...trap/engines/engine.py.207: train: epoch 2 | batch 10/56
+[I 2019-01-18 22:47:59] ...trap/engines/engine.py.210:       elapsed: 0:00:04 | left: 0:00:18
+[I 2019-01-18 22:47:59] ...trap/engines/engine.py.211:       process: 0.27913 | load: 0.00067
+[I 2019-01-18 22:47:59] ...trap/engines/engine.py.212:       loss: 0.01452
+[I 2019-01-18 22:47:59] ...mizers/lr_scheduler.py.103:       norm: 0.02451
+[I 2019-01-18 22:48:01] ...trap/engines/engine.py.207: train: epoch 2 | batch 20/56
+[I 2019-01-18 22:48:01] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:09
+[I 2019-01-18 22:48:01] ...trap/engines/engine.py.211:       process: 0.25310 | load: 0.00064
+[I 2019-01-18 22:48:01] ...trap/engines/engine.py.212:       loss: 0.01387
+[I 2019-01-18 22:48:01] ...mizers/lr_scheduler.py.103:       norm: 0.02314
+[I 2019-01-18 22:48:04] ...trap/engines/engine.py.207: train: epoch 2 | batch 30/56
+[I 2019-01-18 22:48:04] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:07
+[I 2019-01-18 22:48:04] ...trap/engines/engine.py.211:       process: 0.27517 | load: 0.00045
+[I 2019-01-18 22:48:04] ...trap/engines/engine.py.212:       loss: 0.01571
+[I 2019-01-18 22:48:04] ...mizers/lr_scheduler.py.103:       norm: 0.02193
+[I 2019-01-18 22:48:07] ...trap/engines/engine.py.207: train: epoch 2 | batch 40/56
+[I 2019-01-18 22:48:07] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:48:07] ...trap/engines/engine.py.211:       process: 0.28981 | load: 0.00056
+[I 2019-01-18 22:48:07] ...trap/engines/engine.py.212:       loss: 0.01390
+[I 2019-01-18 22:48:07] ...mizers/lr_scheduler.py.103:       norm: 0.02089
+[I 2019-01-18 22:48:09] ...trap/engines/engine.py.207: train: epoch 2 | batch 50/56
+[I 2019-01-18 22:48:09] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:48:09] ...trap/engines/engine.py.211:       process: 0.25169 | load: 0.00062
+[I 2019-01-18 22:48:09] ...trap/engines/engine.py.212:       loss: 0.01288
+[I 2019-01-18 22:48:09] ...mizers/lr_scheduler.py.103:       norm: 0.01995
+[S 2019-01-18 22:48:11] ...trap/engines/engine.py.116: train_epoch.epoch: 2
+[S 2019-01-18 22:48:11] ...trap/engines/engine.py.116: train_epoch.loss: 0.015081
+[S 2019-01-18 22:48:11] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 41.00
+[S 2019-01-18 22:48:11] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 70.40
+[S 2019-01-18 22:48:11] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 71.95914254942153
+[S 2019-01-18 22:48:11] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 79.72414272313519
+[I 2019-01-18 22:48:11] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 2
+[I 2019-01-18 22:48:12] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:48:12] ...trap/engines/engine.py.298: eval: epoch 2 | batch 0/2
+[I 2019-01-18 22:48:12] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:48:12] ...trap/engines/engine.py.302:       process: 0.83895 | load: 0.62492
+[S 2019-01-18 22:48:12] ...trap/engines/engine.py.119: eval_epoch.epoch: 2
+[S 2019-01-18 22:48:12] ...trap/engines/engine.py.119: eval_epoch.loss: 0.048907
+[S 2019-01-18 22:48:12] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 49.83
+[S 2019-01-18 22:48:12] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 80.97
+[S 2019-01-18 22:48:12] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 79.77099236641222
+[S 2019-01-18 22:48:12] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 85.75063613231552
+[I 2019-01-18 22:48:13] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:48:13] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:48:13] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:48:13] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:48:13] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:48:14] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:48:14] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:48:14] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:48:14] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:48:14] ...trap/engines/engine.py.150: Training model on trainset for epoch 3
+[I 2019-01-18 22:48:14] ...mizers/lr_scheduler.py.93: Gradual Warmup lr: 0.00450000 -> 0.00600000
+[I 2019-01-18 22:48:15] ...trap/engines/engine.py.207: train: epoch 3 | batch 0/56
+[I 2019-01-18 22:48:15] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:00
+[I 2019-01-18 22:48:15] ...trap/engines/engine.py.211:       process: 1.07990 | load: 0.71923
+[I 2019-01-18 22:48:15] ...trap/engines/engine.py.212:       loss: 0.01446
+[I 2019-01-18 22:48:15] ...mizers/lr_scheduler.py.103:       norm: 0.01947
+[I 2019-01-18 22:48:18] ...trap/engines/engine.py.207: train: epoch 3 | batch 10/56
+[I 2019-01-18 22:48:18] ...trap/engines/engine.py.210:       elapsed: 0:00:03 | left: 0:00:16
+[I 2019-01-18 22:48:18] ...trap/engines/engine.py.211:       process: 0.26657 | load: 0.00070
+[I 2019-01-18 22:48:18] ...trap/engines/engine.py.212:       loss: 0.01322
+[I 2019-01-18 22:48:18] ...mizers/lr_scheduler.py.103:       norm: 0.01877
+[I 2019-01-18 22:48:21] ...trap/engines/engine.py.207: train: epoch 3 | batch 20/56
+[I 2019-01-18 22:48:21] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:09
+[I 2019-01-18 22:48:21] ...trap/engines/engine.py.211:       process: 0.27115 | load: 0.00038
+[I 2019-01-18 22:48:21] ...trap/engines/engine.py.212:       loss: 0.01276
+[I 2019-01-18 22:48:21] ...mizers/lr_scheduler.py.103:       norm: 0.01812
+[I 2019-01-18 22:48:23] ...trap/engines/engine.py.207: train: epoch 3 | batch 30/56
+[I 2019-01-18 22:48:23] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:06
+[I 2019-01-18 22:48:23] ...trap/engines/engine.py.211:       process: 0.26538 | load: 0.00056
+[I 2019-01-18 22:48:23] ...trap/engines/engine.py.212:       loss: 0.01410
+[I 2019-01-18 22:48:23] ...mizers/lr_scheduler.py.103:       norm: 0.01752
+[I 2019-01-18 22:48:26] ...trap/engines/engine.py.207: train: epoch 3 | batch 40/56
+[I 2019-01-18 22:48:26] ...trap/engines/engine.py.210:       elapsed: 0:00:11 | left: 0:00:04
+[I 2019-01-18 22:48:26] ...trap/engines/engine.py.211:       process: 0.27201 | load: 0.00094
+[I 2019-01-18 22:48:26] ...trap/engines/engine.py.212:       loss: 0.01305
+[I 2019-01-18 22:48:26] ...mizers/lr_scheduler.py.103:       norm: 0.01695
+[I 2019-01-18 22:48:29] ...trap/engines/engine.py.207: train: epoch 3 | batch 50/56
+[I 2019-01-18 22:48:29] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:48:29] ...trap/engines/engine.py.211:       process: 0.25423 | load: 0.00062
+[I 2019-01-18 22:48:29] ...trap/engines/engine.py.212:       loss: 0.01215
+[I 2019-01-18 22:48:29] ...mizers/lr_scheduler.py.103:       norm: 0.01644
+[S 2019-01-18 22:48:30] ...trap/engines/engine.py.116: train_epoch.epoch: 3
+[S 2019-01-18 22:48:30] ...trap/engines/engine.py.116: train_epoch.loss: 0.013825
+[S 2019-01-18 22:48:30] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 46.46
+[S 2019-01-18 22:48:30] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 77.20
+[S 2019-01-18 22:48:30] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 78.32401070076087
+[S 2019-01-18 22:48:30] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 85.29687662856547
+[I 2019-01-18 22:48:30] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 3
+[I 2019-01-18 22:48:31] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:48:31] ...trap/engines/engine.py.298: eval: epoch 3 | batch 0/2
+[I 2019-01-18 22:48:31] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:48:31] ...trap/engines/engine.py.302:       process: 0.90882 | load: 0.69895
+[S 2019-01-18 22:48:32] ...trap/engines/engine.py.119: eval_epoch.epoch: 3
+[S 2019-01-18 22:48:32] ...trap/engines/engine.py.119: eval_epoch.loss: 0.045286
+[S 2019-01-18 22:48:32] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 52.94
+[S 2019-01-18 22:48:32] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 83.70
+[S 2019-01-18 22:48:32] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 83.26972010178118
+[S 2019-01-18 22:48:32] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 88.23155216284987
+[I 2019-01-18 22:48:32] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:48:32] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:48:32] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:48:32] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:48:33] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:48:33] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:48:33] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:48:33] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:48:33] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:48:33] ...trap/engines/engine.py.150: Training model on trainset for epoch 4
+[I 2019-01-18 22:48:33] ...mizers/lr_scheduler.py.99: No change to lr: 0.00600000
+[I 2019-01-18 22:48:35] ...trap/engines/engine.py.207: train: epoch 4 | batch 0/56
+[I 2019-01-18 22:48:35] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:16
+[I 2019-01-18 22:48:35] ...trap/engines/engine.py.211:       process: 1.36741 | load: 0.94805
+[I 2019-01-18 22:48:35] ...trap/engines/engine.py.212:       loss: 0.01361
+[I 2019-01-18 22:48:35] ...mizers/lr_scheduler.py.103:       norm: 0.01615
+[I 2019-01-18 22:48:38] ...trap/engines/engine.py.207: train: epoch 4 | batch 10/56
+[I 2019-01-18 22:48:38] ...trap/engines/engine.py.210:       elapsed: 0:00:04 | left: 0:00:17
+[I 2019-01-18 22:48:38] ...trap/engines/engine.py.211:       process: 0.27012 | load: 0.00038
+[I 2019-01-18 22:48:38] ...trap/engines/engine.py.212:       loss: 0.01243
+[I 2019-01-18 22:48:38] ...mizers/lr_scheduler.py.103:       norm: 0.01576
+[I 2019-01-18 22:48:40] ...trap/engines/engine.py.207: train: epoch 4 | batch 20/56
+[I 2019-01-18 22:48:40] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:10
+[I 2019-01-18 22:48:40] ...trap/engines/engine.py.211:       process: 0.28438 | load: 0.00110
+[I 2019-01-18 22:48:40] ...trap/engines/engine.py.212:       loss: 0.01213
+[I 2019-01-18 22:48:40] ...mizers/lr_scheduler.py.103:       norm: 0.01541
+[I 2019-01-18 22:48:43] ...trap/engines/engine.py.207: train: epoch 4 | batch 30/56
+[I 2019-01-18 22:48:43] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:07
+[I 2019-01-18 22:48:43] ...trap/engines/engine.py.211:       process: 0.26730 | load: 0.00044
+[I 2019-01-18 22:48:43] ...trap/engines/engine.py.212:       loss: 0.01360
+[I 2019-01-18 22:48:43] ...mizers/lr_scheduler.py.103:       norm: 0.01506
+[I 2019-01-18 22:48:46] ...trap/engines/engine.py.207: train: epoch 4 | batch 40/56
+[I 2019-01-18 22:48:46] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:48:46] ...trap/engines/engine.py.211:       process: 0.26074 | load: 0.00081
+[I 2019-01-18 22:48:46] ...trap/engines/engine.py.212:       loss: 0.01260
+[I 2019-01-18 22:48:46] ...mizers/lr_scheduler.py.103:       norm: 0.01477
+[I 2019-01-18 22:48:49] ...trap/engines/engine.py.207: train: epoch 4 | batch 50/56
+[I 2019-01-18 22:48:49] ...trap/engines/engine.py.210:       elapsed: 0:00:15 | left: 0:00:01
+[I 2019-01-18 22:48:49] ...trap/engines/engine.py.211:       process: 0.24920 | load: 0.00076
+[I 2019-01-18 22:48:49] ...trap/engines/engine.py.212:       loss: 0.01177
+[I 2019-01-18 22:48:49] ...mizers/lr_scheduler.py.103:       norm: 0.01443
+[S 2019-01-18 22:48:50] ...trap/engines/engine.py.116: train_epoch.epoch: 4
+[S 2019-01-18 22:48:50] ...trap/engines/engine.py.116: train_epoch.loss: 0.013121
+[S 2019-01-18 22:48:50] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 48.62
+[S 2019-01-18 22:48:50] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 80.48
+[S 2019-01-18 22:48:50] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 81.38831949414586
+[S 2019-01-18 22:48:50] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 87.9442726609457
+[I 2019-01-18 22:48:50] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 4
+[I 2019-01-18 22:48:51] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:48:51] ...trap/engines/engine.py.298: eval: epoch 4 | batch 0/2
+[I 2019-01-18 22:48:51] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:48:51] ...trap/engines/engine.py.302:       process: 0.80802 | load: 0.57126
+[S 2019-01-18 22:48:52] ...trap/engines/engine.py.119: eval_epoch.epoch: 4
+[S 2019-01-18 22:48:52] ...trap/engines/engine.py.119: eval_epoch.loss: 0.043491
+[S 2019-01-18 22:48:52] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 53.28
+[S 2019-01-18 22:48:52] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 84.91
+[S 2019-01-18 22:48:52] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 84.79643765903307
+[S 2019-01-18 22:48:52] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 89.24936386768448
+[I 2019-01-18 22:48:52] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:48:52] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:48:52] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:48:52] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:48:53] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:48:53] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:48:53] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:48:53] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:48:53] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:48:53] ...trap/engines/engine.py.150: Training model on trainset for epoch 5
+[I 2019-01-18 22:48:53] ...mizers/lr_scheduler.py.99: No change to lr: 0.00600000
+[I 2019-01-18 22:48:54] ...trap/engines/engine.py.207: train: epoch 5 | batch 0/56
+[I 2019-01-18 22:48:54] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:00:57
+[I 2019-01-18 22:48:54] ...trap/engines/engine.py.211:       process: 1.02194 | load: 0.57974
+[I 2019-01-18 22:48:54] ...trap/engines/engine.py.212:       loss: 0.01309
+[I 2019-01-18 22:48:54] ...mizers/lr_scheduler.py.103:       norm: 0.01426
+[I 2019-01-18 22:48:57] ...trap/engines/engine.py.207: train: epoch 5 | batch 10/56
+[I 2019-01-18 22:48:57] ...trap/engines/engine.py.210:       elapsed: 0:00:04 | left: 0:00:17
+[I 2019-01-18 22:48:57] ...trap/engines/engine.py.211:       process: 0.29344 | load: 0.00076
+[I 2019-01-18 22:48:57] ...trap/engines/engine.py.212:       loss: 0.01179
+[I 2019-01-18 22:48:57] ...mizers/lr_scheduler.py.103:       norm: 0.01397
+[I 2019-01-18 22:49:00] ...trap/engines/engine.py.207: train: epoch 5 | batch 20/56
+[I 2019-01-18 22:49:00] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:09
+[I 2019-01-18 22:49:00] ...trap/engines/engine.py.211:       process: 0.26412 | load: 0.00055
+[I 2019-01-18 22:49:00] ...trap/engines/engine.py.212:       loss: 0.01167
+[I 2019-01-18 22:49:00] ...mizers/lr_scheduler.py.103:       norm: 0.01372
+[I 2019-01-18 22:49:03] ...trap/engines/engine.py.207: train: epoch 5 | batch 30/56
+[I 2019-01-18 22:49:03] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:06
+[I 2019-01-18 22:49:03] ...trap/engines/engine.py.211:       process: 0.26874 | load: 0.00064
+[I 2019-01-18 22:49:03] ...trap/engines/engine.py.212:       loss: 0.01323
+[I 2019-01-18 22:49:03] ...mizers/lr_scheduler.py.103:       norm: 0.01346
+[I 2019-01-18 22:49:05] ...trap/engines/engine.py.207: train: epoch 5 | batch 40/56
+[I 2019-01-18 22:49:05] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:49:05] ...trap/engines/engine.py.211:       process: 0.26483 | load: 0.00053
+[I 2019-01-18 22:49:05] ...trap/engines/engine.py.212:       loss: 0.01217
+[I 2019-01-18 22:49:05] ...mizers/lr_scheduler.py.103:       norm: 0.01322
+[I 2019-01-18 22:49:08] ...trap/engines/engine.py.207: train: epoch 5 | batch 50/56
+[I 2019-01-18 22:49:08] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:49:08] ...trap/engines/engine.py.211:       process: 0.25927 | load: 0.00066
+[I 2019-01-18 22:49:08] ...trap/engines/engine.py.212:       loss: 0.01113
+[I 2019-01-18 22:49:08] ...mizers/lr_scheduler.py.103:       norm: 0.01300
+[S 2019-01-18 22:49:09] ...trap/engines/engine.py.116: train_epoch.epoch: 5
+[S 2019-01-18 22:49:09] ...trap/engines/engine.py.116: train_epoch.loss: 0.012644
+[S 2019-01-18 22:49:09] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 50.49
+[S 2019-01-18 22:49:09] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 82.48
+[S 2019-01-18 22:49:09] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 83.4033978390022
+[S 2019-01-18 22:49:10] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 89.36525032137025
+[I 2019-01-18 22:49:10] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 5
+[I 2019-01-18 22:49:10] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:49:11] ...trap/engines/engine.py.298: eval: epoch 5 | batch 0/2
+[I 2019-01-18 22:49:11] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:49:11] ...trap/engines/engine.py.302:       process: 0.85637 | load: 0.64754
+[S 2019-01-18 22:49:11] ...trap/engines/engine.py.119: eval_epoch.epoch: 5
+[S 2019-01-18 22:49:11] ...trap/engines/engine.py.119: eval_epoch.loss: 0.043227
+[S 2019-01-18 22:49:11] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 53.73
+[S 2019-01-18 22:49:11] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 84.84
+[S 2019-01-18 22:49:11] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 85.17811704834605
+[S 2019-01-18 22:49:11] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 90.45801526717557
+[I 2019-01-18 22:49:11] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:49:11] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:49:12] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:49:12] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:49:12] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:49:12] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:49:12] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:49:12] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:49:13] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:49:13] ...trap/engines/engine.py.150: Training model on trainset for epoch 6
+[I 2019-01-18 22:49:13] ...mizers/lr_scheduler.py.99: No change to lr: 0.00600000
+[I 2019-01-18 22:49:14] ...trap/engines/engine.py.207: train: epoch 6 | batch 0/56
+[I 2019-01-18 22:49:14] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:00:59
+[I 2019-01-18 22:49:14] ...trap/engines/engine.py.211:       process: 1.06819 | load: 0.62806
+[I 2019-01-18 22:49:14] ...trap/engines/engine.py.212:       loss: 0.01261
+[I 2019-01-18 22:49:14] ...mizers/lr_scheduler.py.103:       norm: 0.01287
+[I 2019-01-18 22:49:17] ...trap/engines/engine.py.207: train: epoch 6 | batch 10/56
+[I 2019-01-18 22:49:17] ...trap/engines/engine.py.210:       elapsed: 0:00:03 | left: 0:00:16
+[I 2019-01-18 22:49:17] ...trap/engines/engine.py.211:       process: 0.26492 | load: 0.00077
+[I 2019-01-18 22:49:17] ...trap/engines/engine.py.212:       loss: 0.01137
+[I 2019-01-18 22:49:17] ...mizers/lr_scheduler.py.103:       norm: 0.01267
+[I 2019-01-18 22:49:19] ...trap/engines/engine.py.207: train: epoch 6 | batch 20/56
+[I 2019-01-18 22:49:19] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:09
+[I 2019-01-18 22:49:19] ...trap/engines/engine.py.211:       process: 0.26062 | load: 0.00046
+[I 2019-01-18 22:49:19] ...trap/engines/engine.py.212:       loss: 0.01154
+[I 2019-01-18 22:49:19] ...mizers/lr_scheduler.py.103:       norm: 0.01249
+[I 2019-01-18 22:49:22] ...trap/engines/engine.py.207: train: epoch 6 | batch 30/56
+[I 2019-01-18 22:49:22] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:06
+[I 2019-01-18 22:49:22] ...trap/engines/engine.py.211:       process: 0.26897 | load: 0.00053
+[I 2019-01-18 22:49:22] ...trap/engines/engine.py.212:       loss: 0.01272
+[I 2019-01-18 22:49:22] ...mizers/lr_scheduler.py.103:       norm: 0.01231
+[I 2019-01-18 22:49:25] ...trap/engines/engine.py.207: train: epoch 6 | batch 40/56
+[I 2019-01-18 22:49:25] ...trap/engines/engine.py.210:       elapsed: 0:00:11 | left: 0:00:04
+[I 2019-01-18 22:49:25] ...trap/engines/engine.py.211:       process: 0.25690 | load: 0.00062
+[I 2019-01-18 22:49:25] ...trap/engines/engine.py.212:       loss: 0.01179
+[I 2019-01-18 22:49:25] ...mizers/lr_scheduler.py.103:       norm: 0.01214
+[I 2019-01-18 22:49:27] ...trap/engines/engine.py.207: train: epoch 6 | batch 50/56
+[I 2019-01-18 22:49:27] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:49:27] ...trap/engines/engine.py.211:       process: 0.24917 | load: 0.00062
+[I 2019-01-18 22:49:27] ...trap/engines/engine.py.212:       loss: 0.01083
+[I 2019-01-18 22:49:27] ...mizers/lr_scheduler.py.103:       norm: 0.01198
+[S 2019-01-18 22:49:28] ...trap/engines/engine.py.116: train_epoch.epoch: 6
+[S 2019-01-18 22:49:28] ...trap/engines/engine.py.116: train_epoch.loss: 0.012269
+[S 2019-01-18 22:49:28] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 51.75
+[S 2019-01-18 22:49:28] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 83.99
+[S 2019-01-18 22:49:29] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 84.64371330299136
+[S 2019-01-18 22:49:29] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 90.3762637668068
+[I 2019-01-18 22:49:29] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 6
+[I 2019-01-18 22:49:29] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:49:30] ...trap/engines/engine.py.298: eval: epoch 6 | batch 0/2
+[I 2019-01-18 22:49:30] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:49:30] ...trap/engines/engine.py.302:       process: 0.84806 | load: 0.63525
+[S 2019-01-18 22:49:30] ...trap/engines/engine.py.119: eval_epoch.epoch: 6
+[S 2019-01-18 22:49:30] ...trap/engines/engine.py.119: eval_epoch.loss: 0.041930
+[S 2019-01-18 22:49:30] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 53.92
+[S 2019-01-18 22:49:30] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 85.47
+[S 2019-01-18 22:49:30] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 85.30534351145039
+[S 2019-01-18 22:49:30] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 90.83969465648855
+[I 2019-01-18 22:49:30] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:49:30] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:49:31] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:49:31] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:49:31] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:49:31] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:49:31] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:49:32] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:49:32] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:49:32] ...trap/engines/engine.py.150: Training model on trainset for epoch 7
+[I 2019-01-18 22:49:32] ...mizers/lr_scheduler.py.99: No change to lr: 0.00600000
+[I 2019-01-18 22:49:33] ...trap/engines/engine.py.207: train: epoch 7 | batch 0/56
+[I 2019-01-18 22:49:33] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:24
+[I 2019-01-18 22:49:33] ...trap/engines/engine.py.211:       process: 1.51029 | load: 1.05407
+[I 2019-01-18 22:49:33] ...trap/engines/engine.py.212:       loss: 0.01240
+[I 2019-01-18 22:49:33] ...mizers/lr_scheduler.py.103:       norm: 0.01189
+[I 2019-01-18 22:49:36] ...trap/engines/engine.py.207: train: epoch 7 | batch 10/56
+[I 2019-01-18 22:49:36] ...trap/engines/engine.py.210:       elapsed: 0:00:04 | left: 0:00:18
+[I 2019-01-18 22:49:36] ...trap/engines/engine.py.211:       process: 0.27971 | load: 0.00041
+[I 2019-01-18 22:49:36] ...trap/engines/engine.py.212:       loss: 0.01114
+[I 2019-01-18 22:49:36] ...mizers/lr_scheduler.py.103:       norm: 0.01176
+[I 2019-01-18 22:49:39] ...trap/engines/engine.py.207: train: epoch 7 | batch 20/56
+[I 2019-01-18 22:49:39] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:10
+[I 2019-01-18 22:49:39] ...trap/engines/engine.py.211:       process: 0.26444 | load: 0.00073
+[I 2019-01-18 22:49:39] ...trap/engines/engine.py.212:       loss: 0.01128
+[I 2019-01-18 22:49:39] ...mizers/lr_scheduler.py.103:       norm: 0.01163
+[I 2019-01-18 22:49:42] ...trap/engines/engine.py.207: train: epoch 7 | batch 30/56
+[I 2019-01-18 22:49:42] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:07
+[I 2019-01-18 22:49:42] ...trap/engines/engine.py.211:       process: 0.24687 | load: 0.00045
+[I 2019-01-18 22:49:42] ...trap/engines/engine.py.212:       loss: 0.01270
+[I 2019-01-18 22:49:42] ...mizers/lr_scheduler.py.103:       norm: 0.01150
+[I 2019-01-18 22:49:44] ...trap/engines/engine.py.207: train: epoch 7 | batch 40/56
+[I 2019-01-18 22:49:44] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:49:44] ...trap/engines/engine.py.211:       process: 0.25752 | load: 0.00060
+[I 2019-01-18 22:49:44] ...trap/engines/engine.py.212:       loss: 0.01157
+[I 2019-01-18 22:49:44] ...mizers/lr_scheduler.py.103:       norm: 0.01137
+[I 2019-01-18 22:49:47] ...trap/engines/engine.py.207: train: epoch 7 | batch 50/56
+[I 2019-01-18 22:49:47] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:49:47] ...trap/engines/engine.py.211:       process: 0.24994 | load: 0.00054
+[I 2019-01-18 22:49:47] ...trap/engines/engine.py.212:       loss: 0.01081
+[I 2019-01-18 22:49:47] ...mizers/lr_scheduler.py.103:       norm: 0.01124
+[S 2019-01-18 22:49:48] ...trap/engines/engine.py.116: train_epoch.epoch: 7
+[S 2019-01-18 22:49:48] ...trap/engines/engine.py.116: train_epoch.loss: 0.011995
+[S 2019-01-18 22:49:48] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 52.35
+[S 2019-01-18 22:49:48] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 84.97
+[S 2019-01-18 22:49:48] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 85.39763054580828
+[S 2019-01-18 22:49:49] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 91.23440919987492
+[I 2019-01-18 22:49:49] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 7
+[I 2019-01-18 22:49:49] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:49:50] ...trap/engines/engine.py.298: eval: epoch 7 | batch 0/2
+[I 2019-01-18 22:49:50] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:49:50] ...trap/engines/engine.py.302:       process: 0.94203 | load: 0.73071
+[S 2019-01-18 22:49:50] ...trap/engines/engine.py.119: eval_epoch.epoch: 7
+[S 2019-01-18 22:49:50] ...trap/engines/engine.py.119: eval_epoch.loss: 0.041186
+[S 2019-01-18 22:49:50] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 54.21
+[S 2019-01-18 22:49:50] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 85.90
+[S 2019-01-18 22:49:50] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 85.87786259541986
+[S 2019-01-18 22:49:50] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 91.41221374045801
+[I 2019-01-18 22:49:50] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:49:50] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:49:51] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:49:51] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:49:51] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:49:51] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:49:51] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:49:51] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:49:52] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:49:52] ...trap/engines/engine.py.150: Training model on trainset for epoch 8
+[I 2019-01-18 22:49:52] ...mizers/lr_scheduler.py.99: No change to lr: 0.00600000
+[I 2019-01-18 22:49:53] ...trap/engines/engine.py.207: train: epoch 8 | batch 0/56
+[I 2019-01-18 22:49:53] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:14
+[I 2019-01-18 22:49:53] ...trap/engines/engine.py.211:       process: 1.32746 | load: 0.94642
+[I 2019-01-18 22:49:53] ...trap/engines/engine.py.212:       loss: 0.01197
+[I 2019-01-18 22:49:53] ...mizers/lr_scheduler.py.103:       norm: 0.01117
+[I 2019-01-18 22:49:56] ...trap/engines/engine.py.207: train: epoch 8 | batch 10/56
+[I 2019-01-18 22:49:56] ...trap/engines/engine.py.210:       elapsed: 0:00:03 | left: 0:00:16
+[I 2019-01-18 22:49:56] ...trap/engines/engine.py.211:       process: 0.25478 | load: 0.00049
+[I 2019-01-18 22:49:56] ...trap/engines/engine.py.212:       loss: 0.01082
+[I 2019-01-18 22:49:56] ...mizers/lr_scheduler.py.103:       norm: 0.01106
+[I 2019-01-18 22:49:58] ...trap/engines/engine.py.207: train: epoch 8 | batch 20/56
+[I 2019-01-18 22:49:58] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:09
+[I 2019-01-18 22:49:58] ...trap/engines/engine.py.211:       process: 0.26407 | load: 0.00069
+[I 2019-01-18 22:49:58] ...trap/engines/engine.py.212:       loss: 0.01108
+[I 2019-01-18 22:49:58] ...mizers/lr_scheduler.py.103:       norm: 0.01095
+[I 2019-01-18 22:50:01] ...trap/engines/engine.py.207: train: epoch 8 | batch 30/56
+[I 2019-01-18 22:50:01] ...trap/engines/engine.py.210:       elapsed: 0:00:08 | left: 0:00:06
+[I 2019-01-18 22:50:01] ...trap/engines/engine.py.211:       process: 0.24668 | load: 0.00053
+[I 2019-01-18 22:50:01] ...trap/engines/engine.py.212:       loss: 0.01228
+[I 2019-01-18 22:50:01] ...mizers/lr_scheduler.py.103:       norm: 0.01085
+[I 2019-01-18 22:50:03] ...trap/engines/engine.py.207: train: epoch 8 | batch 40/56
+[I 2019-01-18 22:50:03] ...trap/engines/engine.py.210:       elapsed: 0:00:11 | left: 0:00:04
+[I 2019-01-18 22:50:03] ...trap/engines/engine.py.211:       process: 0.27272 | load: 0.00051
+[I 2019-01-18 22:50:03] ...trap/engines/engine.py.212:       loss: 0.01149
+[I 2019-01-18 22:50:03] ...mizers/lr_scheduler.py.103:       norm: 0.01076
+[I 2019-01-18 22:50:06] ...trap/engines/engine.py.207: train: epoch 8 | batch 50/56
+[I 2019-01-18 22:50:06] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:50:06] ...trap/engines/engine.py.211:       process: 0.26641 | load: 0.00060
+[I 2019-01-18 22:50:06] ...trap/engines/engine.py.212:       loss: 0.01051
+[I 2019-01-18 22:50:06] ...mizers/lr_scheduler.py.103:       norm: 0.01066
+[S 2019-01-18 22:50:08] ...trap/engines/engine.py.116: train_epoch.epoch: 8
+[S 2019-01-18 22:50:08] ...trap/engines/engine.py.116: train_epoch.loss: 0.011759
+[S 2019-01-18 22:50:08] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 53.06
+[S 2019-01-18 22:50:08] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 85.92
+[S 2019-01-18 22:50:08] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 86.14112496960011
+[S 2019-01-18 22:50:08] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 91.78334433519785
+[I 2019-01-18 22:50:08] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 8
+[I 2019-01-18 22:50:09] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:50:09] ...trap/engines/engine.py.298: eval: epoch 8 | batch 0/2
+[I 2019-01-18 22:50:09] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:50:09] ...trap/engines/engine.py.302:       process: 0.93999 | load: 0.72472
+[S 2019-01-18 22:50:09] ...trap/engines/engine.py.119: eval_epoch.epoch: 8
+[S 2019-01-18 22:50:09] ...trap/engines/engine.py.119: eval_epoch.loss: 0.041840
+[S 2019-01-18 22:50:09] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 54.38
+[S 2019-01-18 22:50:09] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 86.37
+[S 2019-01-18 22:50:09] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 86.19592875318067
+[S 2019-01-18 22:50:09] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 91.15776081424937
+[I 2019-01-18 22:50:09] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:50:09] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:50:10] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:50:10] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:50:10] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:50:10] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:50:10] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:50:10] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:50:11] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:50:11] ...trap/engines/engine.py.150: Training model on trainset for epoch 9
+[I 2019-01-18 22:50:11] ...mizers/lr_scheduler.py.99: No change to lr: 0.00600000
+[I 2019-01-18 22:50:12] ...trap/engines/engine.py.207: train: epoch 9 | batch 0/56
+[I 2019-01-18 22:50:12] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:05
+[I 2019-01-18 22:50:12] ...trap/engines/engine.py.211:       process: 1.17652 | load: 0.79527
+[I 2019-01-18 22:50:12] ...trap/engines/engine.py.212:       loss: 0.01195
+[I 2019-01-18 22:50:12] ...mizers/lr_scheduler.py.103:       norm: 0.01062
+[I 2019-01-18 22:50:15] ...trap/engines/engine.py.207: train: epoch 9 | batch 10/56
+[I 2019-01-18 22:50:15] ...trap/engines/engine.py.210:       elapsed: 0:00:04 | left: 0:00:17
+[I 2019-01-18 22:50:15] ...trap/engines/engine.py.211:       process: 0.25618 | load: 0.00050
+[I 2019-01-18 22:50:15] ...trap/engines/engine.py.212:       loss: 0.01066
+[I 2019-01-18 22:50:15] ...mizers/lr_scheduler.py.103:       norm: 0.01054
+[I 2019-01-18 22:50:18] ...trap/engines/engine.py.207: train: epoch 9 | batch 20/56
+[I 2019-01-18 22:50:18] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:10
+[I 2019-01-18 22:50:18] ...trap/engines/engine.py.211:       process: 0.26496 | load: 0.00078
+[I 2019-01-18 22:50:18] ...trap/engines/engine.py.212:       loss: 0.01084
+[I 2019-01-18 22:50:18] ...mizers/lr_scheduler.py.103:       norm: 0.01047
+[I 2019-01-18 22:50:20] ...trap/engines/engine.py.207: train: epoch 9 | batch 30/56
+[I 2019-01-18 22:50:20] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:06
+[I 2019-01-18 22:50:20] ...trap/engines/engine.py.211:       process: 0.26609 | load: 0.00045
+[I 2019-01-18 22:50:20] ...trap/engines/engine.py.212:       loss: 0.01220
+[I 2019-01-18 22:50:20] ...mizers/lr_scheduler.py.103:       norm: 0.01040
+[I 2019-01-18 22:50:23] ...trap/engines/engine.py.207: train: epoch 9 | batch 40/56
+[I 2019-01-18 22:50:23] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:50:23] ...trap/engines/engine.py.211:       process: 0.26657 | load: 0.00052
+[I 2019-01-18 22:50:23] ...trap/engines/engine.py.212:       loss: 0.01129
+[I 2019-01-18 22:50:23] ...mizers/lr_scheduler.py.103:       norm: 0.01032
+[I 2019-01-18 22:50:26] ...trap/engines/engine.py.207: train: epoch 9 | batch 50/56
+[I 2019-01-18 22:50:26] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:50:26] ...trap/engines/engine.py.211:       process: 0.24751 | load: 0.00131
+[I 2019-01-18 22:50:26] ...trap/engines/engine.py.212:       loss: 0.01027
+[I 2019-01-18 22:50:26] ...mizers/lr_scheduler.py.103:       norm: 0.01024
+[S 2019-01-18 22:50:27] ...trap/engines/engine.py.116: train_epoch.epoch: 9
+[S 2019-01-18 22:50:27] ...trap/engines/engine.py.116: train_epoch.loss: 0.011558
+[S 2019-01-18 22:50:27] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 53.87
+[S 2019-01-18 22:50:27] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 86.86
+[S 2019-01-18 22:50:27] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 86.70048292394816
+[S 2019-01-18 22:50:27] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 92.17246291213563
+[I 2019-01-18 22:50:27] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 9
+[I 2019-01-18 22:50:28] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:50:28] ...trap/engines/engine.py.298: eval: epoch 9 | batch 0/2
+[I 2019-01-18 22:50:28] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:50:28] ...trap/engines/engine.py.302:       process: 0.88033 | load: 0.66104
+[S 2019-01-18 22:50:29] ...trap/engines/engine.py.119: eval_epoch.epoch: 9
+[S 2019-01-18 22:50:29] ...trap/engines/engine.py.119: eval_epoch.loss: 0.041642
+[S 2019-01-18 22:50:29] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 54.66
+[S 2019-01-18 22:50:29] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 86.18
+[S 2019-01-18 22:50:29] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 86.57760814249363
+[S 2019-01-18 22:50:29] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 92.49363867684478
+[I 2019-01-18 22:50:29] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:50:29] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:50:29] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:50:29] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:50:30] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:50:30] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:50:30] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:50:30] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:50:30] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:50:30] ...trap/engines/engine.py.150: Training model on trainset for epoch 10
+[I 2019-01-18 22:50:30] ...mizers/lr_scheduler.py.97: Decrease lr: 0.00600000 -> 0.00150000
+[I 2019-01-18 22:50:32] ...trap/engines/engine.py.207: train: epoch 10 | batch 0/56
+[I 2019-01-18 22:50:32] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:03
+[I 2019-01-18 22:50:32] ...trap/engines/engine.py.211:       process: 1.12631 | load: 0.71582
+[I 2019-01-18 22:50:32] ...trap/engines/engine.py.212:       loss: 0.01190
+[I 2019-01-18 22:50:32] ...mizers/lr_scheduler.py.103:       norm: 0.01021
+[I 2019-01-18 22:50:34] ...trap/engines/engine.py.207: train: epoch 10 | batch 10/56
+[I 2019-01-18 22:50:34] ...trap/engines/engine.py.210:       elapsed: 0:00:03 | left: 0:00:16
+[I 2019-01-18 22:50:34] ...trap/engines/engine.py.211:       process: 0.26082 | load: 0.00051
+[I 2019-01-18 22:50:34] ...trap/engines/engine.py.212:       loss: 0.01049
+[I 2019-01-18 22:50:34] ...mizers/lr_scheduler.py.103:       norm: 0.01014
+[I 2019-01-18 22:50:37] ...trap/engines/engine.py.207: train: epoch 10 | batch 20/56
+[I 2019-01-18 22:50:37] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:09
+[I 2019-01-18 22:50:37] ...trap/engines/engine.py.211:       process: 0.27246 | load: 0.00076
+[I 2019-01-18 22:50:37] ...trap/engines/engine.py.212:       loss: 0.01038
+[I 2019-01-18 22:50:37] ...mizers/lr_scheduler.py.103:       norm: 0.01008
+[I 2019-01-18 22:50:40] ...trap/engines/engine.py.207: train: epoch 10 | batch 30/56
+[I 2019-01-18 22:50:40] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:06
+[I 2019-01-18 22:50:40] ...trap/engines/engine.py.211:       process: 0.26982 | load: 0.00086
+[I 2019-01-18 22:50:40] ...trap/engines/engine.py.212:       loss: 0.01170
+[I 2019-01-18 22:50:40] ...mizers/lr_scheduler.py.103:       norm: 0.01000
+[I 2019-01-18 22:50:42] ...trap/engines/engine.py.207: train: epoch 10 | batch 40/56
+[I 2019-01-18 22:50:42] ...trap/engines/engine.py.210:       elapsed: 0:00:11 | left: 0:00:04
+[I 2019-01-18 22:50:42] ...trap/engines/engine.py.211:       process: 0.25967 | load: 0.00065
+[I 2019-01-18 22:50:42] ...trap/engines/engine.py.212:       loss: 0.01100
+[I 2019-01-18 22:50:42] ...mizers/lr_scheduler.py.103:       norm: 0.00992
+[I 2019-01-18 22:50:45] ...trap/engines/engine.py.207: train: epoch 10 | batch 50/56
+[I 2019-01-18 22:50:45] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:50:45] ...trap/engines/engine.py.211:       process: 0.25602 | load: 0.00067
+[I 2019-01-18 22:50:45] ...trap/engines/engine.py.212:       loss: 0.00997
+[I 2019-01-18 22:50:45] ...mizers/lr_scheduler.py.103:       norm: 0.00985
+[S 2019-01-18 22:50:46] ...trap/engines/engine.py.116: train_epoch.epoch: 10
+[S 2019-01-18 22:50:46] ...trap/engines/engine.py.116: train_epoch.loss: 0.011243
+[S 2019-01-18 22:50:46] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 54.54
+[S 2019-01-18 22:50:46] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 87.54
+[S 2019-01-18 22:50:46] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 87.45787443977348
+[S 2019-01-18 22:50:47] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 92.78393496160928
+[I 2019-01-18 22:50:47] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 10
+[I 2019-01-18 22:50:47] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:50:48] ...trap/engines/engine.py.298: eval: epoch 10 | batch 0/2
+[I 2019-01-18 22:50:48] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:50:48] ...trap/engines/engine.py.302:       process: 0.79439 | load: 0.57378
+[S 2019-01-18 22:50:48] ...trap/engines/engine.py.119: eval_epoch.epoch: 10
+[S 2019-01-18 22:50:48] ...trap/engines/engine.py.119: eval_epoch.loss: 0.041270
+[S 2019-01-18 22:50:48] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 54.60
+[S 2019-01-18 22:50:48] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 86.73
+[S 2019-01-18 22:50:48] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 86.38676844783714
+[S 2019-01-18 22:50:48] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 91.53944020356234
+[I 2019-01-18 22:50:48] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:50:48] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:50:48] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:50:49] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:50:49] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:50:49] ...trap/engines/engine.py.150: Training model on trainset for epoch 11
+[I 2019-01-18 22:50:49] ...mizers/lr_scheduler.py.99: No change to lr: 0.00150000
+[I 2019-01-18 22:50:50] ...trap/engines/engine.py.207: train: epoch 11 | batch 0/56
+[I 2019-01-18 22:50:50] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:00
+[I 2019-01-18 22:50:50] ...trap/engines/engine.py.211:       process: 1.08298 | load: 0.66585
+[I 2019-01-18 22:50:50] ...trap/engines/engine.py.212:       loss: 0.01143
+[I 2019-01-18 22:50:50] ...mizers/lr_scheduler.py.103:       norm: 0.00982
+[I 2019-01-18 22:50:53] ...trap/engines/engine.py.207: train: epoch 11 | batch 10/56
+[I 2019-01-18 22:50:53] ...trap/engines/engine.py.210:       elapsed: 0:00:03 | left: 0:00:16
+[I 2019-01-18 22:50:53] ...trap/engines/engine.py.211:       process: 0.26605 | load: 0.00046
+[I 2019-01-18 22:50:53] ...trap/engines/engine.py.212:       loss: 0.01029
+[I 2019-01-18 22:50:53] ...mizers/lr_scheduler.py.103:       norm: 0.00975
+[I 2019-01-18 22:50:56] ...trap/engines/engine.py.207: train: epoch 11 | batch 20/56
+[I 2019-01-18 22:50:56] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:09
+[I 2019-01-18 22:50:56] ...trap/engines/engine.py.211:       process: 0.25563 | load: 0.00057
+[I 2019-01-18 22:50:56] ...trap/engines/engine.py.212:       loss: 0.01041
+[I 2019-01-18 22:50:56] ...mizers/lr_scheduler.py.103:       norm: 0.00969
+[I 2019-01-18 22:50:58] ...trap/engines/engine.py.207: train: epoch 11 | batch 30/56
+[I 2019-01-18 22:50:58] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:06
+[I 2019-01-18 22:50:58] ...trap/engines/engine.py.211:       process: 0.26974 | load: 0.00045
+[I 2019-01-18 22:50:58] ...trap/engines/engine.py.212:       loss: 0.01162
+[I 2019-01-18 22:50:58] ...mizers/lr_scheduler.py.103:       norm: 0.00962
+[I 2019-01-18 22:51:01] ...trap/engines/engine.py.207: train: epoch 11 | batch 40/56
+[I 2019-01-18 22:51:01] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:51:01] ...trap/engines/engine.py.211:       process: 0.27083 | load: 0.00054
+[I 2019-01-18 22:51:01] ...trap/engines/engine.py.212:       loss: 0.01079
+[I 2019-01-18 22:51:01] ...mizers/lr_scheduler.py.103:       norm: 0.00956
+[I 2019-01-18 22:51:03] ...trap/engines/engine.py.207: train: epoch 11 | batch 50/56
+[I 2019-01-18 22:51:03] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:51:03] ...trap/engines/engine.py.211:       process: 0.27243 | load: 0.00067
+[I 2019-01-18 22:51:03] ...trap/engines/engine.py.212:       loss: 0.00993
+[I 2019-01-18 22:51:03] ...mizers/lr_scheduler.py.103:       norm: 0.00949
+[S 2019-01-18 22:51:05] ...trap/engines/engine.py.116: train_epoch.epoch: 11
+[S 2019-01-18 22:51:05] ...trap/engines/engine.py.116: train_epoch.loss: 0.011143
+[S 2019-01-18 22:51:05] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 54.86
+[S 2019-01-18 22:51:05] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 87.76
+[S 2019-01-18 22:51:05] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 87.60379390612513
+[S 2019-01-18 22:51:05] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 92.86384324080186
+[I 2019-01-18 22:51:05] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 11
+[I 2019-01-18 22:51:06] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:51:06] ...trap/engines/engine.py.298: eval: epoch 11 | batch 0/2
+[I 2019-01-18 22:51:06] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:51:06] ...trap/engines/engine.py.302:       process: 0.99283 | load: 0.75455
+[S 2019-01-18 22:51:07] ...trap/engines/engine.py.119: eval_epoch.epoch: 11
+[S 2019-01-18 22:51:07] ...trap/engines/engine.py.119: eval_epoch.loss: 0.040953
+[S 2019-01-18 22:51:07] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 54.53
+[S 2019-01-18 22:51:07] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 86.39
+[S 2019-01-18 22:51:07] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 86.76844783715013
+[S 2019-01-18 22:51:07] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 91.66666666666666
+[I 2019-01-18 22:51:07] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:51:07] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:51:07] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:51:07] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:51:08] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:51:08] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:51:08] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:51:08] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:51:09] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:51:09] ...trap/engines/engine.py.150: Training model on trainset for epoch 12
+[I 2019-01-18 22:51:09] ...mizers/lr_scheduler.py.97: Decrease lr: 0.00150000 -> 0.00037500
+[I 2019-01-18 22:51:10] ...trap/engines/engine.py.207: train: epoch 12 | batch 0/56
+[I 2019-01-18 22:51:10] ...trap/engines/engine.py.210:       elapsed: 0:00:00 | left: 0:00:54
+[I 2019-01-18 22:51:10] ...trap/engines/engine.py.211:       process: 0.97438 | load: 0.60590
+[I 2019-01-18 22:51:10] ...trap/engines/engine.py.212:       loss: 0.01132
+[I 2019-01-18 22:51:10] ...mizers/lr_scheduler.py.103:       norm: 0.00946
+[I 2019-01-18 22:51:12] ...trap/engines/engine.py.207: train: epoch 12 | batch 10/56
+[I 2019-01-18 22:51:12] ...trap/engines/engine.py.210:       elapsed: 0:00:03 | left: 0:00:15
+[I 2019-01-18 22:51:12] ...trap/engines/engine.py.211:       process: 0.27362 | load: 0.00068
+[I 2019-01-18 22:51:12] ...trap/engines/engine.py.212:       loss: 0.01022
+[I 2019-01-18 22:51:12] ...mizers/lr_scheduler.py.103:       norm: 0.00940
+[I 2019-01-18 22:51:15] ...trap/engines/engine.py.207: train: epoch 12 | batch 20/56
+[I 2019-01-18 22:51:15] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:09
+[I 2019-01-18 22:51:15] ...trap/engines/engine.py.211:       process: 0.26390 | load: 0.00048
+[I 2019-01-18 22:51:15] ...trap/engines/engine.py.212:       loss: 0.01025
+[I 2019-01-18 22:51:15] ...mizers/lr_scheduler.py.103:       norm: 0.00935
+[I 2019-01-18 22:51:18] ...trap/engines/engine.py.207: train: epoch 12 | batch 30/56
+[I 2019-01-18 22:51:18] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:06
+[I 2019-01-18 22:51:18] ...trap/engines/engine.py.211:       process: 0.24516 | load: 0.00051
+[I 2019-01-18 22:51:18] ...trap/engines/engine.py.212:       loss: 0.01141
+[I 2019-01-18 22:51:18] ...mizers/lr_scheduler.py.103:       norm: 0.00929
+[I 2019-01-18 22:51:21] ...trap/engines/engine.py.207: train: epoch 12 | batch 40/56
+[I 2019-01-18 22:51:21] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:51:21] ...trap/engines/engine.py.211:       process: 0.27220 | load: 0.00054
+[I 2019-01-18 22:51:21] ...trap/engines/engine.py.212:       loss: 0.01070
+[I 2019-01-18 22:51:21] ...mizers/lr_scheduler.py.103:       norm: 0.00923
+[I 2019-01-18 22:51:23] ...trap/engines/engine.py.207: train: epoch 12 | batch 50/56
+[I 2019-01-18 22:51:23] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:51:23] ...trap/engines/engine.py.211:       process: 0.24878 | load: 0.00053
+[I 2019-01-18 22:51:23] ...trap/engines/engine.py.212:       loss: 0.00995
+[I 2019-01-18 22:51:23] ...mizers/lr_scheduler.py.103:       norm: 0.00917
+[S 2019-01-18 22:51:25] ...trap/engines/engine.py.116: train_epoch.epoch: 12
+[S 2019-01-18 22:51:25] ...trap/engines/engine.py.116: train_epoch.loss: 0.011022
+[S 2019-01-18 22:51:25] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 55.26
+[S 2019-01-18 22:51:25] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 88.02
+[S 2019-01-18 22:51:25] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 87.95469547997081
+[S 2019-01-18 22:51:25] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 93.13483653545495
+[I 2019-01-18 22:51:25] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 12
+[I 2019-01-18 22:51:26] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:51:26] ...trap/engines/engine.py.298: eval: epoch 12 | batch 0/2
+[I 2019-01-18 22:51:26] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:51:26] ...trap/engines/engine.py.302:       process: 0.80537 | load: 0.58770
+[S 2019-01-18 22:51:26] ...trap/engines/engine.py.119: eval_epoch.epoch: 12
+[S 2019-01-18 22:51:26] ...trap/engines/engine.py.119: eval_epoch.loss: 0.040950
+[S 2019-01-18 22:51:26] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 54.99
+[S 2019-01-18 22:51:26] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 86.60
+[S 2019-01-18 22:51:26] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 86.70483460559797
+[S 2019-01-18 22:51:26] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 92.6208651399491
+[I 2019-01-18 22:51:27] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:51:27] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:51:27] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:51:27] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:51:27] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:51:27] ...trap/engines/engine.py.150: Training model on trainset for epoch 13
+[I 2019-01-18 22:51:27] ...mizers/lr_scheduler.py.99: No change to lr: 0.00037500
+[I 2019-01-18 22:51:29] ...trap/engines/engine.py.207: train: epoch 13 | batch 0/56
+[I 2019-01-18 22:51:29] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:39
+[I 2019-01-18 22:51:29] ...trap/engines/engine.py.211:       process: 1.77960 | load: 1.13358
+[I 2019-01-18 22:51:29] ...trap/engines/engine.py.212:       loss: 0.01129
+[I 2019-01-18 22:51:29] ...mizers/lr_scheduler.py.103:       norm: 0.00914
+[I 2019-01-18 22:51:32] ...trap/engines/engine.py.207: train: epoch 13 | batch 10/56
+[I 2019-01-18 22:51:32] ...trap/engines/engine.py.210:       elapsed: 0:00:04 | left: 0:00:19
+[I 2019-01-18 22:51:32] ...trap/engines/engine.py.211:       process: 0.26265 | load: 0.00071
+[I 2019-01-18 22:51:32] ...trap/engines/engine.py.212:       loss: 0.01021
+[I 2019-01-18 22:51:32] ...mizers/lr_scheduler.py.103:       norm: 0.00909
+[I 2019-01-18 22:51:35] ...trap/engines/engine.py.207: train: epoch 13 | batch 20/56
+[I 2019-01-18 22:51:35] ...trap/engines/engine.py.210:       elapsed: 0:00:07 | left: 0:00:10
+[I 2019-01-18 22:51:35] ...trap/engines/engine.py.211:       process: 0.28287 | load: 0.00063
+[I 2019-01-18 22:51:35] ...trap/engines/engine.py.212:       loss: 0.01016
+[I 2019-01-18 22:51:35] ...mizers/lr_scheduler.py.103:       norm: 0.00904
+[I 2019-01-18 22:51:37] ...trap/engines/engine.py.207: train: epoch 13 | batch 30/56
+[I 2019-01-18 22:51:37] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:06
+[I 2019-01-18 22:51:37] ...trap/engines/engine.py.211:       process: 0.24858 | load: 0.00053
+[I 2019-01-18 22:51:37] ...trap/engines/engine.py.212:       loss: 0.01137
+[I 2019-01-18 22:51:37] ...mizers/lr_scheduler.py.103:       norm: 0.00899
+[I 2019-01-18 22:51:40] ...trap/engines/engine.py.207: train: epoch 13 | batch 40/56
+[I 2019-01-18 22:51:40] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:51:40] ...trap/engines/engine.py.211:       process: 0.25382 | load: 0.00076
+[I 2019-01-18 22:51:40] ...trap/engines/engine.py.212:       loss: 0.01067
+[I 2019-01-18 22:51:40] ...mizers/lr_scheduler.py.103:       norm: 0.00894
+[I 2019-01-18 22:51:42] ...trap/engines/engine.py.207: train: epoch 13 | batch 50/56
+[I 2019-01-18 22:51:42] ...trap/engines/engine.py.210:       elapsed: 0:00:14 | left: 0:00:01
+[I 2019-01-18 22:51:42] ...trap/engines/engine.py.211:       process: 0.27052 | load: 0.00093
+[I 2019-01-18 22:51:42] ...trap/engines/engine.py.212:       loss: 0.00985
+[I 2019-01-18 22:51:42] ...mizers/lr_scheduler.py.103:       norm: 0.00889
+[S 2019-01-18 22:51:44] ...trap/engines/engine.py.116: train_epoch.epoch: 13
+[S 2019-01-18 22:51:44] ...trap/engines/engine.py.116: train_epoch.loss: 0.010970
+[S 2019-01-18 22:51:44] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 55.23
+[S 2019-01-18 22:51:44] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 88.20
+[S 2019-01-18 22:51:44] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 88.23263732064066
+[S 2019-01-18 22:51:44] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 93.40930410311643
+[I 2019-01-18 22:51:44] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 13
+[I 2019-01-18 22:51:45] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:51:45] ...trap/engines/engine.py.298: eval: epoch 13 | batch 0/2
+[I 2019-01-18 22:51:45] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:51:45] ...trap/engines/engine.py.302:       process: 0.84168 | load: 0.62761
+[S 2019-01-18 22:51:45] ...trap/engines/engine.py.119: eval_epoch.epoch: 13
+[S 2019-01-18 22:51:45] ...trap/engines/engine.py.119: eval_epoch.loss: 0.040878
+[S 2019-01-18 22:51:45] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 55.30
+[S 2019-01-18 22:51:45] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 86.80
+[S 2019-01-18 22:51:45] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 86.83206106870229
+[S 2019-01-18 22:51:45] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 91.41221374045801
+[I 2019-01-18 22:51:46] ...trap/engines/engine.py.125: Saving best checkpoint for strategy eval_epoch.predicate.R_50
+[I 2019-01-18 22:51:46] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:51:46] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:51:46] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:51:46] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:51:46] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:51:46] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:51:47] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:51:47] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:51:47] ...trap/engines/engine.py.150: Training model on trainset for epoch 14
+[I 2019-01-18 22:51:47] ...mizers/lr_scheduler.py.97: Decrease lr: 0.00037500 -> 0.00009375
+[I 2019-01-18 22:51:49] ...trap/engines/engine.py.207: train: epoch 14 | batch 0/56
+[I 2019-01-18 22:51:49] ...trap/engines/engine.py.210:       elapsed: 0:00:01 | left: 0:01:28
+[I 2019-01-18 22:51:49] ...trap/engines/engine.py.211:       process: 1.57334 | load: 1.16753
+[I 2019-01-18 22:51:49] ...trap/engines/engine.py.212:       loss: 0.01145
+[I 2019-01-18 22:51:49] ...mizers/lr_scheduler.py.103:       norm: 0.00886
+[I 2019-01-18 22:51:51] ...trap/engines/engine.py.207: train: epoch 14 | batch 10/56
+[I 2019-01-18 22:51:51] ...trap/engines/engine.py.210:       elapsed: 0:00:04 | left: 0:00:18
+[I 2019-01-18 22:51:51] ...trap/engines/engine.py.211:       process: 0.27858 | load: 0.00058
+[I 2019-01-18 22:51:51] ...trap/engines/engine.py.212:       loss: 0.01012
+[I 2019-01-18 22:51:51] ...mizers/lr_scheduler.py.103:       norm: 0.00882
+[I 2019-01-18 22:51:54] ...trap/engines/engine.py.207: train: epoch 14 | batch 20/56
+[I 2019-01-18 22:51:54] ...trap/engines/engine.py.210:       elapsed: 0:00:06 | left: 0:00:09
+[I 2019-01-18 22:51:54] ...trap/engines/engine.py.211:       process: 0.25465 | load: 0.00080
+[I 2019-01-18 22:51:54] ...trap/engines/engine.py.212:       loss: 0.01018
+[I 2019-01-18 22:51:54] ...mizers/lr_scheduler.py.103:       norm: 0.00879
+[I 2019-01-18 22:51:57] ...trap/engines/engine.py.207: train: epoch 14 | batch 30/56
+[I 2019-01-18 22:51:57] ...trap/engines/engine.py.210:       elapsed: 0:00:09 | left: 0:00:07
+[I 2019-01-18 22:51:57] ...trap/engines/engine.py.211:       process: 0.27852 | load: 0.00058
+[I 2019-01-18 22:51:57] ...trap/engines/engine.py.212:       loss: 0.01126
+[I 2019-01-18 22:51:57] ...mizers/lr_scheduler.py.103:       norm: 0.00874
+[I 2019-01-18 22:51:59] ...trap/engines/engine.py.207: train: epoch 14 | batch 40/56
+[I 2019-01-18 22:51:59] ...trap/engines/engine.py.210:       elapsed: 0:00:12 | left: 0:00:04
+[I 2019-01-18 22:51:59] ...trap/engines/engine.py.211:       process: 0.26909 | load: 0.00072
+[I 2019-01-18 22:51:59] ...trap/engines/engine.py.212:       loss: 0.01070
+[I 2019-01-18 22:51:59] ...mizers/lr_scheduler.py.103:       norm: 0.00869
+[I 2019-01-18 22:52:02] ...trap/engines/engine.py.207: train: epoch 14 | batch 50/56
+[I 2019-01-18 22:52:02] ...trap/engines/engine.py.210:       elapsed: 0:00:15 | left: 0:00:01
+[I 2019-01-18 22:52:02] ...trap/engines/engine.py.211:       process: 0.27044 | load: 0.00056
+[I 2019-01-18 22:52:02] ...trap/engines/engine.py.212:       loss: 0.00980
+[I 2019-01-18 22:52:02] ...mizers/lr_scheduler.py.103:       norm: 0.00864
+[S 2019-01-18 22:52:04] ...trap/engines/engine.py.116: train_epoch.epoch: 14
+[S 2019-01-18 22:52:04] ...trap/engines/engine.py.116: train_epoch.loss: 0.010949
+[S 2019-01-18 22:52:04] ...trap/engines/engine.py.116: train_epoch.accuracy_top1: 55.59
+[S 2019-01-18 22:52:04] ...trap/engines/engine.py.116: train_epoch.accuracy_top5: 88.36
+[S 2019-01-18 22:52:04] ...trap/engines/engine.py.60: train_epoch.predicate.R_50: 88.3299169648751
+[S 2019-01-18 22:52:04] ...trap/engines/engine.py.60: train_epoch.predicate.R_100: 93.44752110620853
+[I 2019-01-18 22:52:04] ...trap/engines/engine.py.248: Evaluating model on valset for epoch 14
+[I 2019-01-18 22:52:05] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:52:05] ...trap/engines/engine.py.298: eval: epoch 14 | batch 0/2
+[I 2019-01-18 22:52:05] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:01
+[I 2019-01-18 22:52:05] ...trap/engines/engine.py.302:       process: 0.99146 | load: 0.61119
+[S 2019-01-18 22:52:05] ...trap/engines/engine.py.119: eval_epoch.epoch: 14
+[S 2019-01-18 22:52:05] ...trap/engines/engine.py.119: eval_epoch.loss: 0.040809
+[S 2019-01-18 22:52:05] ...trap/engines/engine.py.119: eval_epoch.accuracy_top1: 55.65
+[S 2019-01-18 22:52:05] ...trap/engines/engine.py.119: eval_epoch.accuracy_top5: 86.67
+[S 2019-01-18 22:52:05] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 86.76844783715013
+[S 2019-01-18 22:52:05] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 92.49363867684478
+[I 2019-01-18 22:52:06] ...trap/engines/engine.py.128: Saving last checkpoint
+[I 2019-01-18 22:52:06] ...trap/engines/engine.py.416: Saving model...
+[I 2019-01-18 22:52:06] ...trap/engines/engine.py.420: Saving optimizer...
+[I 2019-01-18 22:52:06] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html
+[I 2019-01-18 22:52:06] ...trap/engines/engine.py.424: Saving engine...
+[I 2019-01-18 22:52:06] ...trap/engines/engine.py.132: Ending training procedures

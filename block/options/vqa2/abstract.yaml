@@ -1,0 +1,64 @@
+exp:
+  dir: logs/vqa2/debug
+  resume: # last, best_[...], or empty (from scratch)
+dataset:
+  import: block.datasets.factory
+  name: vqa2 # or vqa2vg
+  dir: data/vqa/vqa2
+  train_split: train
+  eval_split: val # or test
+  proc_split: train # or trainval (preprocessing split, must be equal to train_split)
+  nb_threads: 4
+  batch_size: 64
+  nans: 3000
+  minwcount: 0
+  nlp: mcb
+  samplingans: True
+  dir_rcnn: data/vqa/coco/extract_rcnn/2018-04-27_bottom-up-attention_fixed_36
+  vg: False
+  dir_vg: data/vqa/vgenome
+  dir_rcnn_vg: data/vqa/vgenome/extract_rcnn/2018-04-27_bottom-up-attention_fixed_36
+model:
+  name: default
+  network:
+    import: block.models.networks.factory
+    name: vqa_net
+    txt_enc:
+      name: skipthoughts
+      type: BayesianUniSkip
+      dropout: 0.25
+      fixed_emb: False
+      dir_st: data/skip-thoughts
+    self_q_att: True
+    attention: # Glimpse that computes attention over regions with the question representation (output of txt_enc)
+      mlp_glimpses: 2 # 0
+  criterion:
+    import: block.models.criterions.factory
+    name: vqa_cross_entropy
+  metric:
+    import: block.models.metrics.factory
+    name: vqa_accuracies
+optimizer:
+  import: block.optimizers.factory
+  name: Adamax
+  lr: 0.0007
+  gradual_warmup_steps: [0.5, 2.0, 4] #torch.linspace
+  lr_decay_epochs: [10, 20, 2] #range
+  lr_decay_rate: .25
+engine:
+  name: logger
+  debug: False
+  print_freq: 10
+  nb_epochs: 22
+  saving_criteria:
+  - eval_epoch.accuracy_top1:max
+misc:
+  logs_name:
+  cuda: True
+  seed: 1337
+view:
+  name: plotly
+  items:
+  - logs:train_epoch.loss+logs:eval_epoch.loss
+  - logs:train_epoch.accuracy_top1+logs:eval_epoch.accuracy_top1
+  - logs_train_oe:train_epoch.overall+logs_val_oe:eval_epoch.overall

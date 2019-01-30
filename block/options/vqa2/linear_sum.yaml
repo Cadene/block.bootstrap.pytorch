@@ -1,0 +1,19 @@
+__include__: abstract.yaml
+model:
+  network:
+    attention:
+      fusion:
+        type: linear_sum
+        input_dims: [4800, 2048] #[2400, 2048]
+        output_dim: 1000 #Fixed
+        mm_dim: 1200
+        dropout_input: 0.1
+        dropout_pre_lin: 0.
+    classif:
+      fusion:
+        type: linear_sum
+        input_dims: [4800, 4096]
+        output_dim: 3000 #Fixed
+        mm_dim: 1200
+        dropout_input: 0.1
+        dropout_pre_lin: 0.

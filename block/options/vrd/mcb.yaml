@@ -1,0 +1,18 @@
+__include__: abstract.yaml
+model:
+  network:
+    classeme:
+      type: mcb
+      input_dims: [100, 100]
+      mcb_dim: 3000
+      output_dim: 200
+    spatial:
+      type: mcb
+      input_dims: [4, 4]
+      mcb_dim: 3000
+      output_dim: 200
+    feature:
+      type: mcb
+      input_dims: [2048, 2048]
+      mcb_dim: 3000
+      output_dim: 200

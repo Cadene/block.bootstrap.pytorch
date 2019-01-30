@@ -1,0 +1,6 @@
+torch
+skipthoughts
+pretrainedmodels
+opencv-python
+tqdm
+bootstrap.pytorch

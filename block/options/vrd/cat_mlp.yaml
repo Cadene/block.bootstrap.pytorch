@@ -1,0 +1,21 @@
+__include__: abstract.yaml
+model:
+  network:
+    classeme:
+      type: cat_mlp
+      input_dims: [100, 100]
+      output_dim: 200
+      activation: relu
+      dimensions: [400]
+    spatial:
+      type: cat_mlp
+      input_dims: [4, 4]
+      output_dim: 200
+      activation: relu
+      dimensions: [400]
+    feature:
+      type: cat_mlp
+      input_dims: [2048, 2048]
+      output_dim: 200
+      activation: relu
+      dimensions: [400]

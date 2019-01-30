@@ -1,0 +1,21 @@
+__include__: abstract.yaml
+model:
+  network:
+    classeme:
+      type: mutan
+      input_dims: [100, 100]
+      output_dim: 200
+      mm_dim: 700
+      rank: 10
+    spatial:
+      type: mutan
+      input_dims: [4, 4]
+      output_dim: 200
+      mm_dim: 700
+      rank: 10
+    feature:
+      type: mutan
+      input_dims: [2048, 2048]
+      output_dim: 200
+      mm_dim: 700
+      rank: 10

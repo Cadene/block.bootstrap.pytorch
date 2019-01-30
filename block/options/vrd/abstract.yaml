@@ -1,0 +1,63 @@
+exp:
+  dir: logs/vrd/debug
+  resume: # best, last, or empty (from scratch)
+dataset:
+  import: block.datasets.factory
+  name: vrd
+  dir: data/vrd
+  debug: False
+  train_split: train # or trainval
+  eval_split: val # or test
+  neg_ratio: 0.5
+  batch_size: 64
+  nb_threads: 8
+  mode: predicate # or rel_phrase
+model:
+  name: default
+  network:
+    import: block.models.networks.factory
+    name: vrd_net
+    classeme_dim: 100
+    nb_classeme: 101
+    aggreg:
+      type: cat
+    aggreg_dropout: 0.5
+    predictor:
+      input_dim: 600
+      dimensions: [71]
+      activation: relu
+      dropout: 0.
+  criterion:
+    import: block.models.criterions.factory
+    name: vrd_bce
+  metric:
+    import: block.models.metrics.factory
+    name: vrd_predicate
+optimizer:
+  import: block.optimizers.factory
+  name: Adamax
+  init: glorot
+  lr: 0.003
+  gradual_warmup_steps: [0.5, 2.0, 4] #torch.linspace
+  lr_decay_epochs: [10, 20, 2] #range
+  lr_decay_rate: .25
+engine:
+  name: logger
+  nb_epochs: 15
+  debug: False
+  print_freq: 10
+  saving_criteria:
+  - eval_epoch.predicate.R_50:max
+misc:
+  logs_name:
+  cuda: True
+  seed: 1337
+view:
+  name: plotly
+  items:
+  - logs:train_epoch.loss+logs:eval_epoch.loss
+  - logs:train_epoch.predicate.R_50+logs:eval_epoch.predicate.R_50
+  - logs:train_epoch.predicate.R_100+logs:eval_epoch.predicate.R_100
+  - logs:train_epoch.accuracy_top1+logs:eval_epoch.accuracy_top1
+  - logs:train_epoch.accuracy_top5+logs:eval_epoch.accuracy_top5
+  - logs:train_epoch.lr

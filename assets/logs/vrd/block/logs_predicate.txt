@@ -1,0 +1,111 @@
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62: options: 
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:   dataset:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     batch_size: 64
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     debug: False
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     dir: data/vrd
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     eval_split: test
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     import: block.datasets.factory
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     mode: predicate
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     name: vrd
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     nb_threads: 8
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     neg_ratio: 0.5
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     train_split: None
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:   engine:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     debug: False
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     name: logger
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     nb_epochs: 15
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     print_freq: 10
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     saving_criteria: ['eval_epoch.predicate.R_50:max']
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:   exp:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     dir: logs/vrd/block
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     resume: best_eval_epoch.predicate.R_50
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:   misc:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     cuda: True
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     logs_name: predicate
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     seed: 1337
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:   model:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     criterion:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       import: block.models.criterions.factory
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       name: vrd_bce
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     metric:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       import: block.models.metrics.factory
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       name: vrd_predicate
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     name: default
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     network:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       aggreg:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         type: cat
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       aggreg_dropout: 0.5
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       classeme:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         chunks: 10
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         input_dims: [100, 100]
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         mm_dim: 700
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         output_dim: 200
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         rank: 5
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         shared: False
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         type: block
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       classeme_dim: 100
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       feature:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         chunks: 10
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         input_dims: [2048, 2048]
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         mm_dim: 700
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         output_dim: 200
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         rank: 5
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         shared: False
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         type: block
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       import: block.models.networks.factory
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       name: vrd_net
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       nb_classeme: 101
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       predictor:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         activation: relu
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         dimensions: [71]
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         dropout: 0.0
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         input_dim: 600
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:       spatial:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         chunks: 10
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         input_dims: [4, 4]
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         mm_dim: 700
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         output_dim: 200
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         rank: 5
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         shared: False
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:         type: block
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:   optimizer:
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     gradual_warmup_steps: [0.5, 2.0, 4]
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     import: block.optimizers.factory
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     init: glorot
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     lr: 0.003
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     lr_decay_epochs: [10, 20, 2]
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     lr_decay_rate: 0.25
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:     name: Adamax
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:   path_opts: logs/vrd/block/options.yaml
+[S 2019-01-18 22:52:12] ...oject/bootstrap/run.py.62:   view: ['logs:train_epoch.loss+logs:eval_epoch.loss', 'logs:train_epoch.predicate.R_50+logs:eval_epoch.predicate.R_50', 'logs:train_epoch.predicate.R_100+logs:eval_epoch.predicate.R_100', 'logs:train_epoch.accuracy_top1+logs:eval_epoch.accuracy_top1', 'logs:train_epoch.accuracy_top5+logs:eval_epoch.accuracy_top5', 'logs:train_epoch.lr']
+[I 2019-01-18 22:52:12] ...oject/bootstrap/run.py.63: posix.uname_result(sysname='Linux', nodename='sledge', release='4.17.0-1-amd64', version='#1 SMP Debian 4.17.8-1 (2018-07-20)', machine='x86_64')
+[I 2019-01-18 22:52:12] ...oject/bootstrap/run.py.67: Available GPUs: [3]
+[I 2019-01-18 22:52:12] ...rap/engines/factory.py.8: Creating engine...
+[I 2019-01-18 22:52:12] ...ap/datasets/factory.py.8: Creating dataset...
+[I 2019-01-18 22:52:12] ...ap/datasets/factory.py.21: Evaluation will take place on testset (955 items)
+[I 2019-01-18 22:52:12] ...trap/models/factory.py.12: Creating model...
+[I 2019-01-18 22:52:12] ...ls/networks/factory.py.8: Creating network...
+[S 2019-01-18 22:52:12] ...ls/networks/vrd_net.py.18: nb_params_fusion: 778600
+[S 2019-01-18 22:52:12] ...ls/networks/vrd_net.py.19: nb_params_fusion: 644200
+[S 2019-01-18 22:52:12] ...ls/networks/vrd_net.py.20: nb_params_fusion: 3505800
+[I 2019-01-18 22:52:12] .../criterions/factory.py.16: Creating criterion from bootstrap for eval mode...
+[I 2019-01-18 22:52:12] ...els/metrics/factory.py.14: Creating metric from bootstrap for eval mode...
+[I 2019-01-18 22:52:16] ...strap/views/factory.py.7: Creating view...
+[I 2019-01-18 22:52:16] ...trap/engines/engine.py.86: Loading best_eval_epoch.predicate.R_50 checkpoint
+[I 2019-01-18 22:52:16] ...trap/engines/engine.py.386: Loading model...
+[I 2019-01-18 22:52:16] ...trap/engines/engine.py.399: Loading engine...
+[I 2019-01-18 22:52:16] ...trap/engines/engine.py.95: Launching evaluation procedures
+[I 2019-01-18 22:52:16] ...trap/engines/engine.py.248: Evaluating model on testset for epoch 13
+[I 2019-01-18 22:52:17] ...trap/engines/engine.py.298: eval: epoch 13 | batch 0/14
+[I 2019-01-18 22:52:17] ...trap/engines/engine.py.301:       elapsed: 0:00:00 | left: 0:00:11
+[I 2019-01-18 22:52:17] ...trap/engines/engine.py.302:       process: 0.83890 | load: 0.46184
+[I 2019-01-18 22:52:18] ...trap/engines/engine.py.298: eval: epoch 13 | batch 10/14
+[I 2019-01-18 22:52:18] ...trap/engines/engine.py.301:       elapsed: 0:00:02 | left: 0:00:00
+[I 2019-01-18 22:52:18] ...trap/engines/engine.py.302:       process: 0.15947 | load: 0.00034
+[S 2019-01-18 22:52:19] ...trap/engines/engine.py.100: eval_epoch.epoch: 13
+[S 2019-01-18 22:52:19] ...trap/engines/engine.py.100: eval_epoch.accuracy_top1: 55.30
+[S 2019-01-18 22:52:19] ...trap/engines/engine.py.100: eval_epoch.accuracy_top5: 87.24
+[S 2019-01-18 22:52:19] ...trap/engines/engine.py.60: eval_epoch.predicate.R_50: 86.37077769049489
+[S 2019-01-18 22:52:19] ...trap/engines/engine.py.60: eval_epoch.predicate.R_100: 92.45875883739198
+[I 2019-01-18 22:52:19] ...trap/engines/engine.py.102: Ending evaluation procedures
+[I 2019-01-18 22:52:21] ...ootstrap/views/view.py.135: View generated in logs/vrd/block/view.html

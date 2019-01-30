@@ -1,0 +1,23 @@
+__include__: abstract.yaml
+model:
+  network:
+    attention:
+      fusion:
+        type: block
+        input_dims: [4800, 2048] #[2400, 2048]
+        output_dim: 1000 #Fixed
+        mm_dim: 1600
+        chunks: 18
+        rank: 15
+        dropout_input: 0.1
+        dropout_pre_lin: 0.
+    classif:
+      fusion:
+        type: block
+        input_dims: [4800, 4096]
+        output_dim: 3000 #Fixed
+        mm_dim: 1600
+        chunks: 18
+        rank: 15
+        dropout_input: 0.1
+        dropout_pre_lin: 0.

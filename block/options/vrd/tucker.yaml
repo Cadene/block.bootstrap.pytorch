@@ -1,0 +1,21 @@
+__include__: abstract.yaml
+model:
+  network:
+    classeme:
+      type: tucker
+      input_dims: [100, 100]
+      output_dim: 200
+      mm_dim: 100
+      normalize: true
+    spatial:
+      type: tucker
+      input_dims: [4, 4]
+      output_dim: 200
+      mm_dim: 100
+      normalize: true
+    feature:
+      type: tucker
+      input_dims: [2048, 2048]
+      output_dim: 200
+      mm_dim: 100
+      normalize: true

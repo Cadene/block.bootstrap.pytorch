@@ -1,0 +1,17 @@
+__include__: abstract.yaml
+model:
+  network:
+    attention:
+      fusion:
+        type: mcb
+        input_dims: [4800, 2048] #[2400, 2048]
+        output_dim: 1000 #Fixed
+        mm_dim: 16000
+        dropout_output: 0.1
+    classif:
+      fusion:
+        type: mcb
+        input_dims: [4800, 4096]
+        output_dim: 3000 #Fixed
+        mm_dim: 16000
+        dropout_output: 0.1
