@@ -54,7 +54,10 @@ class VG(AbstractVQA):
 
     def add_rcnn_to_item(self, item):
         path_rcnn = os.path.join(self.dir_rcnn, '{}.pth'.format(item['image_name']))
-        item['visual'] = torch.load(path_rcnn)['pooled_feat']
+        item_rcnn = torch.load(path_rcnn)
+        item['visual'] = item_rcnn['pooled_feat']
+        item['coord'] = item_rcnn['rois']
+        item['norm_coord'] = item_rcnn['norm_rois']
         item['nb_regions'] = item['visual'].size(0)
         return item
 
