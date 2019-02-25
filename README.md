@@ -676,9 +676,13 @@ Reference: [Multimodal Compact Bilinear Pooling for Visual Question Answering an
 
 ### Use tensorboard instead of plotly
 
+Instead of creating a `view.html` file, a tensorboard file will be created:
 ```
-TODO
+python -m bootstrap.run -o block/options/vqa2/block.yaml \
+--view.name tensorboard
 ```
+
+You can use plotly and tensorboard at the same time by updating the yaml file like [this one](https://github.com/Cadene/bootstrap.pytorch/blob/master/bootstrap/options/mnist_plotly_tensorboard.yaml#L38).
 
 ### Use a specific GPU
 
