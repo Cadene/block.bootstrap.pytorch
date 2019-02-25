@@ -9,12 +9,11 @@ from bootstrap.lib.options import Options
 from .fusions.factory import factory as factory_fusion
 
 def mask_softmax(x, lengths):#, dim=1)
-    mask = torch.zeros_like(x)
-    t_lengths = torch.LongTensor(lengths)[:,None, None].expand_as(mask)
-    arange_id = torch.arange(mask.size(1))[None,:,None].expand_as(mask)
-    if mask.is_cuda:
-        t_lengths = t_lengths.cuda()
-        arange_id = arange_id.cuda()
+    mask = torch.zeros_like(x).to(device=x.device, non_blocking=True)
+    t_lengths = lengths[:,:, None].expand_as(mask)
+    arange_id = torch.arange(mask.size(1)).to(device=x.device, non_blocking=True)
+    arange_id = arange_id[None,:,None].expand_as(mask)
+
     mask[arange_id<t_lengths] = 1
     x = torch.exp(x)
     x = x * mask

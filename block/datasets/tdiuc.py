@@ -3,7 +3,6 @@ import os.path as osp
 import sys
 import csv
 import base64
-import cv2
 import json
 import numpy as np
 import torch

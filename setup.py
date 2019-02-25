@@ -124,7 +124,9 @@ setup(
         'skipthoughts',
         'pretrainedmodels',
         'opencv-python',
-        #'cfft'
+        'tqdm'
+        #'cffi',
+        #'pytorch-fft'
     ],
 
     # pip install pytorch-fft does not install the last version
@@ -145,6 +147,7 @@ setup(
     extras_require={  # Optional
     #    'dev': ['check-manifest'],
         'test': ['pytest'],
+        'mcb': ['cffi', 'pytorch-fft']
     },
 
     # If there are data files included in your packages that need to be
