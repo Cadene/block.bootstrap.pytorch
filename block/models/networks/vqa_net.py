@@ -10,7 +10,7 @@ from .fusions.factory import factory as factory_fusion
 
 def mask_softmax(x, lengths):#, dim=1)
     mask = torch.zeros_like(x).to(device=x.device, non_blocking=True)
-    t_lengths = lengths[:,:, None].expand_as(mask)
+    t_lengths = lengths[:,:,None].expand_as(mask)
     arange_id = torch.arange(mask.size(1)).to(device=x.device, non_blocking=True)
     arange_id = arange_id[None,:,None].expand_as(mask)
 
@@ -63,10 +63,7 @@ class VQANet(nn.Module):
         v = batch['visual']
         q = batch['question']
         l = batch['lengths']
-        # l contains the number of words for each question
-        # in case of multi-gpus it must be a Tensor
-        # thus we convert it into a list during the forward pass
-        l = list(l.data[:,0])
+
         q = self.process_question(q, l)
         v = self.attention(q, v)
         logits = self.fusion([q, v])
@@ -76,10 +73,6 @@ class VQANet(nn.Module):
 
     def process_question(self, q, l):
         q_emb = self.txt_enc.embedding(q)
-        q_mask = (q!=0).view(-1,q.size(1), 1).expand_as(q_emb)
-        q_mask = q_mask.float()
-        q_emb = q_emb*q_mask
-
         q, _ = self.txt_enc.rnn(q_emb)
 
         if self.self_q_att:
@@ -103,6 +96,10 @@ class VQANet(nn.Module):
                 q = q_att * q
                 q = q.sum(1)
         else:
+            # l contains the number of words for each question
+            # in case of multi-gpus it must be a Tensor
+            # thus we convert it into a list during the forward pass
+            l = list(l.data[:,0])
             q = self.txt_enc._select_last(q, l)
 
         return q
