@@ -18,10 +18,10 @@ def real_split_name(split):
     else:
         raise ValueError()
 
-def main(dir_vqa, dir_exp, dir_rslt, epoch, split, cmd_line=True):
+def main(dir_vqa, dir_exp, dir_rslt, epoch, split, cmd_line=True, logs_name="logs", rm=True):
     real_split = real_split_name(split)
     if cmd_line:
-        Logger(dir_exp, name='logs_{}_oe'.format(split))
+        Logger(dir_exp, name=f'{logs_name}_{split}_oe')
 
     diranno  = join(dir_vqa, 'raw', 'annotations')
     annFile  = join(diranno, 'mscoco_%s_annotations.json' % (real_split))
@@ -62,7 +62,8 @@ def main(dir_vqa, dir_exp, dir_rslt, epoch, split, cmd_line=True):
 
     Logger().flush()
     json.dump(vqaEval.accuracy, open(accuracyFile, 'w'))
-    os.system('rm -rf '+dir_rslt)
+    if rm:
+        os.system('rm -rf '+dir_rslt)
 
 
 if __name__=="__main__":
@@ -72,9 +73,11 @@ if __name__=="__main__":
     parser.add_argument('--dir_rslt', type=str, default='logs/16_12_13_20:39:55/results/train/epoch,1')
     parser.add_argument('--epoch', type=int, default=1)
     parser.add_argument('--split',  type=str, default='train')
+    parser.add_argument('--logs_name',  type=str, default='logs')
+    parser.add_argument('--rm',  type=int, default=1)
     args = parser.parse_args()
 
-    main(args.dir_vqa, args.dir_exp, args.dir_rslt, args.epoch, args.split)
+    main(args.dir_vqa, args.dir_exp, args.dir_rslt, args.epoch, args.split, logs_name=args.logs_name, rm=args.rm)
     
     #json.dump(vqaEval.evalQA,       open(evalQAFile,       'w'))
     #json.dump(vqaEval.evalQuesType, open(evalQuesTypeFile, 'w'))
