@@ -58,6 +58,7 @@ setup(
     # This field corresponds to the "Description" metadata field:
     # https://packaging.python.org/specifications/core-metadata/#description-optional
     long_description=long_description,  # Optional
+    long_description_content_type="text/markdown",
 
     # This should be a valid link to your project's main homepage.
     #
