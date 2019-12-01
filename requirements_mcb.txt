@@ -1,4 +1,0 @@
-torch<=0.4
-torch>=0.3
-cffi
-pytorch-fft
