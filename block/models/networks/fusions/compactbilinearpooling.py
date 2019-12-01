@@ -1,10 +1,8 @@
-# source: https://github.com/gdlg/pytorch_compact_bilinear_pooling/blob/master/compact_bilinear_pooling.py
 import types
 import torch
 import torch.nn as nn
-import pytorch_fft.fft.autograd as afft
-import pytorch_fft.fft as fft
-from torch.autograd import Variable, Function
+from torch.autograd import Function
+
 
 def CountSketchFn_forward(h, s, output_size, x, force_cpu_scatter_add=False):
     x_size = tuple(x.size())
@@ -113,7 +111,7 @@ class CountSketch(nn.Module):
 
         assert(x_size[-1] == self.input_size)
 
-        return CountSketchFn.apply(Variable(self.h), Variable(self.s), self.output_size, x)
+        return CountSketchFn.apply(self.h, self.s, self.output_size, x)
 
 def ComplexMultiply_forward(X_re, X_im, Y_re, Y_im):
     Z_re = torch.addcmul(X_re*Y_re, -1, X_im, Y_im)
@@ -137,7 +135,7 @@ class ComplexMultiply(torch.autograd.Function):
     @staticmethod
     def backward(ctx,grad_Z_re, grad_Z_im):
         X_re,X_im,Y_re,Y_im = ctx.saved_tensors
-        return ComplexMultiply_backward(Variable(X_re),Variable(X_im),Variable(Y_re),Variable(Y_im), grad_Z_re, grad_Z_im)
+        return ComplexMultiply_backward(X_re,X_im,Y_re,Y_im, grad_Z_re, grad_Z_im)
 
 class CompactBilinearPoolingFn(Function):
 
@@ -151,10 +149,14 @@ class CompactBilinearPoolingFn(Function):
 
         # Compute the count sketch of each input
         px = CountSketchFn_forward(h1, s1, output_size, x, force_cpu_scatter_add)
-        re_fx,im_fx = fft.rfft(px)
+        fx = torch.rfft(px,1)
+        re_fx = fx.select(-1, 0)
+        im_fx = fx.select(-1, 1)
         del px
         py = CountSketchFn_forward(h2, s2, output_size, y, force_cpu_scatter_add)
-        re_fy,im_fy = fft.rfft(py)
+        fy = torch.rfft(py,1)
+        re_fy = fy.select(-1,0)
+        im_fy = fy.select(-1,1)
         del py
 
         # Convolution of the two sketch using an FFT.
@@ -166,7 +168,7 @@ class CompactBilinearPoolingFn(Function):
 
         # Back to real domain
         # The imaginary part should be zero's
-        re = fft.irfft(re_prod, im_prod)
+        re = torch.irfft(torch.stack((re_prod, im_prod), re_prod.dim()), 1, signal_sizes=(output_size,))
 
         return re
 
@@ -181,36 +183,38 @@ class CompactBilinearPoolingFn(Function):
 
         # Then convert the output to Fourier domain
         grad_output = grad_output.contiguous()
-        grad_re_prod, grad_im_prod = afft.Rfft()(grad_output)
+        grad_prod = torch.rfft(grad_output, 1)
+        grad_re_prod = grad_prod.select(-1, 0)
+        grad_im_prod = grad_prod.select(-1, 1)
 
         # Compute the gradient of x first then y
 
         # Gradient of x
         # Recompute fy
-        re_fy,im_fy = fft.rfft(py)
+        fy = torch.rfft(py,1)
+        re_fy = fy.select(-1,0)
+        im_fy = fy.select(-1,1)
         del py
-        re_fy = Variable(re_fy)
-        im_fy = Variable(im_fy)
         # Compute the gradient of fx, then back to temporal space
         grad_re_fx = torch.addcmul(grad_re_prod * re_fy,  1, grad_im_prod, im_fy)
         grad_im_fx = torch.addcmul(grad_im_prod * re_fy, -1, grad_re_prod, im_fy)
-        grad_fx = afft.Irfft()(grad_re_fx,grad_im_fx)
+        grad_fx = torch.irfft(torch.stack((grad_re_fx,grad_im_fx), grad_re_fx.dim()), 1, signal_sizes=(ctx.output_size,))
         # Finally compute the gradient of x
-        grad_x = CountSketchFn_backward(Variable(h1), Variable(s1), ctx.x_size, grad_fx)
+        grad_x = CountSketchFn_backward(h1, s1, ctx.x_size, grad_fx)
         del re_fy,im_fy,grad_re_fx,grad_im_fx,grad_fx
 
         # Gradient of y
         # Recompute fx
-        re_fx,im_fx = fft.rfft(px)
+        fx = torch.rfft(px,1)
+        re_fx = fx.select(-1, 0)
+        im_fx = fx.select(-1, 1)
         del px
-        re_fx = Variable(re_fx)
-        im_fx = Variable(im_fx)
         # Compute the gradient of fy, then back to temporal space
         grad_re_fy = torch.addcmul(grad_re_prod * re_fx,  1, grad_im_prod, im_fx)
         grad_im_fy = torch.addcmul(grad_im_prod * re_fx, -1, grad_re_prod, im_fx)
-        grad_fy = afft.Irfft()(grad_re_fy,grad_im_fy)
+        grad_fy = torch.irfft(torch.stack((grad_re_fy,grad_im_fy), grad_re_fy.dim()), 1, signal_sizes=(ctx.output_size,))
         # Finally compute the gradient of y
-        grad_y = CountSketchFn_backward(Variable(h2), Variable(s2), ctx.y_size, grad_fy)
+        grad_y = CountSketchFn_backward(h2, s2, ctx.y_size, grad_fy)
         del re_fx,im_fx,grad_re_fy,grad_im_fy,grad_fy
 
         return None, None, None, None, None, grad_x, grad_y, None
@@ -249,9 +253,6 @@ class CompactBilinearPooling(nn.Module):
         super(CompactBilinearPooling, self).__init__()
         self.add_module('sketch1', CountSketch(input1_size, output_size, h1, s1))
         self.add_module('sketch2', CountSketch(input2_size, output_size, h2, s2))
-        self.fft = afft.Rfft()
-        self.fft2 = afft.Rfft()
-        self.ifft = afft.Irfft()
         self.output_size = output_size
         self.force_cpu_scatter_add = force_cpu_scatter_add
 
@@ -259,4 +260,4 @@ class CompactBilinearPooling(nn.Module):
         if y is None:
             y = x
 
-        return CompactBilinearPoolingFn.apply(Variable(self.sketch1.h), Variable(self.sketch1.s), Variable(self.sketch2.h), Variable(self.sketch2.s), self.output_size, x, y, self.force_cpu_scatter_add)
+        return CompactBilinearPoolingFn.apply(self.sketch1.h, self.sketch1.s, self.sketch2.h, self.sketch2.s, self.output_size, x, y, self.force_cpu_scatter_add)
